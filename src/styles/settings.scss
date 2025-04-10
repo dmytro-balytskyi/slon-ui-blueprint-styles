@@ -1,0 +1,13 @@
+/**
+ * src/styles/settings.scss
+ *
+ * Configures SASS variables and Vuetify overwrites
+ */
+
+// https://vuetifyjs.com/features/sass-variables/`
+@use 'vuetify/settings' with (
+  $body-font-family: 'Roboto Condensed',
+  $heading-font-family: 'Roboto Condensed',
+  $badge-min-width: 16px,
+  $badge-height: 16px
+);

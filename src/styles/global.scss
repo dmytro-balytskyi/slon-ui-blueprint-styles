@@ -1,0 +1,376 @@
+// маска пошукового фрагменту (акцентування малиновим кольором)
+.v-combobox__mask,
+.v-autocomplete__mask {
+  background: rgb(var(--v-theme-selected)) !important;
+  color: #fff;
+}
+
+// відступ в слотах v-list-item по замовчуванню
+.v-list-item__prepend,
+.v-list-item__append {
+  .v-list-item__spacer {
+    width: 8px !important;
+  }
+}
+
+// колір іконок у кнопках по замовчуванню (сірий)
+.v-btn.v-theme--light:not([class*='bg-']):not(.f-btn):not(.v-tab--selected):not([class*='text-']) {
+  .v-icon {
+    color: #757575 !important;
+  }
+}
+
+.v-btn.v-theme--dark:not([class*='bg-']):not(.f-btn):not(.v-tab--selected):not([class*='text-']) {
+  .v-icon {
+    color: #fafafa !important;
+  }
+}
+
+// slot:details (слот повідомлень) у v-text-field
+.v-messages {
+  top: -6px;
+  /* підняли вище */
+  left: 2px;
+  /* подвинули правіше */
+  text-transform: lowercase;
+  /* текст завжди у нижньому регістрі */
+  white-space: nowrap;
+  /* забороняє переноси */
+  overflow: hidden;
+  /* ховає текст, що виходить за межі */
+  text-overflow: ellipsis;
+  /* додає три крапки для тексту, що обрізається */
+  max-width: 100%;
+  /* обмежує ширину в межах контейнера */
+  box-sizing: border-box;
+  /* враховує padding і border у ширині */
+}
+
+// розташування кастомного тексту v-messages (слот details у v-textfield)
+.s-messages-custom {
+  position: relative;
+  left: 0;
+  top: -6px;
+  white-space: nowrap;
+  /* забороняємо перенос тексту */
+  overflow: hidden;
+  /* ховаємо текст, що виходить за межі */
+  text-overflow: ellipsis;
+  /* додаємо три крапки для обрізаного тексту */
+}
+
+// відступи до prepend та append слотів у v-text-field
+.v-text-field {
+  .v-input__prepend {
+    margin-inline-end: 8px !important;
+  }
+
+  .v-input__append {
+    margin-inline-start: 8px !important;
+  }
+}
+
+// списки
+.s-list {
+  overflow-y: auto;
+  scrollbar-width: thin;
+
+  .v-list-group__items {
+    --indent-padding: 0px;
+  }
+
+  .v-list-item:not(:last-child) {
+    border-bottom-width: thin;
+    border-bottom-style: solid;
+    border-bottom-color: rgba(var(--v-border-color), var(--v-border-opacity));
+  }
+}
+
+// колір фону та тексту Активного класу у Списку
+.v-theme--light.v-list-item--active {
+  background-color: #f2f2f2 !important;
+  /* змінюємо фон */
+  color: #616161 !important;
+  /* змінюємо колір тексту */
+}
+
+// регулювання прозорості іконок у input полях та у списках
+.v-theme--light {
+
+  .v-list-item__prepend>.v-icon,
+  .v-input__prepend>.v-icon,
+  .v-input__append>.v-icon,
+  .v-field__prepend-inner>.v-icon,
+  .v-field__append-inner>.v-icon {
+    opacity: 0.65;
+  }
+}
+
+.v-theme--dark {
+
+  .v-list-item__prepend>.v-icon,
+  .v-input__prepend>.v-icon,
+  .v-input__append>.v-icon,
+  .v-field__prepend-inner>.v-icon,
+  .v-field__append-inner>.v-icon {
+    opacity: 0.9;
+  }
+}
+
+// регулювання прозорості іконок та тексту у label слоті inputа
+.v-label.v-field-label {
+  opacity: 1;
+  color: rgba(var(--v-theme-on-background), 0.6);
+
+  .v-icon {
+    color: rgba(var(--v-theme-on-background), 0.6);
+    pointer-events: auto;
+  }
+}
+
+.v-field--focused .v-label.v-field-label,
+.v-field--error .v-label.v-field-label {
+  color: rgba(var(--v-theme-on-background), 1);
+}
+
+// f-btn (аліас кнопки v-btn)
+.f-btn.v-btn--variant-tonal {
+  background-color: rgba(0, 0, 0, 0.12) !important;
+}
+
+.v-theme--dark.f-btn {
+
+  .v-btn__content {
+    // колір тексту в f-btn dark theme
+    color: #fff;
+  }
+
+  i {
+    // колір іконки в f-btn dark theme
+    color: #fafafa;
+  }
+
+  .v-btn__underlay,
+  .v-btn__overlay {
+    // колір фону в f-btn dark theme (на цьому елементі стоїть прозорість 0.12)
+    background-color: rgba(255, 255, 255, 0.966) !important;
+  }
+}
+
+.f-btn {
+  i {
+    color: #757575;
+  }
+
+  .v-btn__content {
+    color: rgba(0, 0, 0, 0.87);
+  }
+
+  .v-btn__underlay,
+  .v-btn__overlay {
+    background-color: unset !important;
+  }
+
+  &:hover {
+    color: #fff !important;
+
+    i,
+    .v-btn__content {
+      color: #fff;
+    }
+  }
+
+  &:not([class*="text-"]):hover {
+    color: #fff !important;
+    background-color: rgb(var(--v-theme-primary)) !important;
+  }
+
+  @each $color in success, error, warning, info {
+    &.text-#{$color}:hover {
+      background-color: rgb(var(--v-theme-#{$color})) !important;
+    }
+  }
+}
+
+// стилізація v-tab (додатковий slider)
+.add-slider {
+  .v-tab__slider.text-primary:before {
+    content: '';
+    position: absolute;
+    height: 100%;
+    width: 100%;
+    background: inherit;
+    left: 0;
+    z-index: 5;
+    bottom: var(--v-tabs-height);
+    transform: translateY(100%);
+  }
+
+  .v-tab__slider {
+    height: 3px;
+  }
+}
+
+// колір активного v-tab для темної теми
+.v-theme--dark {
+  .v-tab__slider {
+    background-color: #ff4081;
+    /* колір таба */
+  }
+
+  .v-tab-item--selected {
+    color: #ff4081 !important;
+    /* колір тексту */
+  }
+}
+
+// піднімаємо лічильник у всіх полях вводу (v-textarea, v-textfield тощо)
+.v-counter {
+  transform: translateY(-8px);
+  /* Піднімає counter на 2 пікселя */
+}
+
+// колір іконок обраних айтемів в випадаючих списках селектів (checkbox success)
+.v-select__content .mdi-checkbox-marked,
+.v-autocomplete__content .mdi-checkbox-marked,
+.v-combobox__content .mdi-checkbox-marked {
+  color: rgb(var(--v-theme-success));
+}
+
+// центрування іконок по висоті (для v-select з класом center-affix)
+.v-textarea.center-affix,
+.v-select.center-affix,
+.v-combobox.center-affix,
+.v-autocomplete.center-affix {
+  align-items: center;
+
+  .v-field {
+    align-items: center;
+  }
+}
+
+// регулювання умовної кількості рядків (висоти) у полях вибору (v-select, v-combobox тощо) та вертикальне вирівнювання
+@each $rows, $height in (1: 28px, 2: 62px, 3: 96px, 4: 130px, 5: 164px, 6: 198px, 7: 232px, 8: 266px) {
+  .rows-#{$rows} {
+    .v-field__input {
+      height: $height;
+      min-height: $height;
+      overflow-y: auto;
+      scrollbar-width: thin;
+      padding-top: 0;
+      margin-top: var(--v-field-input-padding-top);
+      align-items: flex-start;
+      align-content: flex-start;
+    }
+  }
+}
+
+// змінюємо мінімальну ширину для v-snackbar
+.v-overlay__content.v-snackbar__wrapper {
+  min-width: 200px;
+}
+
+// змінюємо розмір шрифта prefix та suffix
+.v-field__field {
+
+  .v-text-field__suffix__text,
+  .v-text-field__prefix__text {
+    font-size: 0.800rem;
+    transform: translateY(2px);
+  }
+}
+
+// підсвічування тексту в highlight-field
+.highlight-field {
+  width: 100%;
+  position: relative;
+
+  .colorize-title {
+    position: absolute;
+    top: 20px;
+    background-color: rgb(var(--v-theme-background));
+    width: 100%;
+
+    &.text-area {
+      top: 14px;
+      padding-top: 6px;
+      max-height: calc(100% - 37px);
+      overflow-y: auto;
+      white-space: pre-line;
+    }
+  }
+}
+
+// ширина кнопки v-bottom-navigation з 1 кнопкою (допоміжний клас)
+.max-width-100 {
+  max-width: 100% !important;
+}
+
+// фон тулбара
+.v-toolbar.custom-toolbar {
+  background: #fff;
+}
+
+.v-theme--dark.v-toolbar.custom-toolbar {
+  background: #000;
+}
+
+// розмір action кнопок у тулбарі сторінки
+.page-action-btn {
+  width: 56px !important;
+  height: 64px !important;
+}
+
+// стиль onHover для input полей
+.field-hover-handle {
+  .field-hover-icon {
+    display: none;
+  }
+
+  &:hover .field-hover-icon {
+    display: block;
+  }
+}
+
+// невідомо?
+.v-select {
+  .v-field__input {
+    row-gap: 0px;
+  }
+}
+
+.two-rows {
+  .v-field__input {
+    row-gap: 0px !important;
+    max-height: 90px;
+    overflow-y: auto;
+    scrollbar-width: thin;
+  }
+}
+
+.three-rows {
+  .v-field__input {
+    row-gap: 0px !important;
+    max-height: 124px;
+    overflow-y: auto;
+    scrollbar-width: thin;
+  }
+}
+
+.four-rows {
+  .v-field__input {
+    row-gap: 0px !important;
+    max-height: 160px;
+    overflow-y: auto;
+    scrollbar-width: thin;
+  }
+}
+
+.five-rows {
+  .v-field__input {
+    row-gap: 0px !important;
+    max-height: 194px;
+    overflow-y: auto;
+    scrollbar-width: thin;
+  }
+}
