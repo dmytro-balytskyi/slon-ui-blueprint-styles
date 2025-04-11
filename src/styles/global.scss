@@ -374,3 +374,8 @@
     scrollbar-width: thin;
   }
 }
+
+.v-menu:has(.v-combobox__content),
+.v-menu:has(.v-select__content) .custom-z-index {
+  z-index: 10000 !important;
+}
