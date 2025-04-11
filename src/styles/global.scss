@@ -376,6 +376,16 @@
 }
 
 .v-menu:has(.v-combobox__content),
-.v-menu:has(.v-select__content) .custom-z-index {
+.v-menu:has(.v-select__content),
+.custom-z-index {
   z-index: 10000 !important;
+}
+
+.v-date-picker-controls button {
+  width: auto !important;
+}
+
+.v-date-picker-month__day button {
+  height: 100% !important;
+  width: 100% !important;
 }
