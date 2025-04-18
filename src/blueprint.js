@@ -300,6 +300,10 @@ const blueprint = {
 
     VAppBar: {
       height: 72
+    },
+
+    VMain: {
+      style: '--v-layout-bottom: 0px;'
     }
   }
 }
