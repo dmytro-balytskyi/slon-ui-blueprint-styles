@@ -303,7 +303,7 @@ const blueprint = {
     },
 
     VMain: {
-      style: '--v-layout-bottom: 0 !important'
+      style: '--v-layout-bottom: 0px;'
     }
   }
 }
