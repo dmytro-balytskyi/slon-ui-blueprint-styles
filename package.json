@@ -1,6 +1,6 @@
 {
   "name": "@slonbeton/slon-ui-blueprint-styles",
-  "version": "0.0.7",
+  "version": "0.0.8",
   "description": "SlonBeton blueprint and global scss",
   "main": "./src/index.js",
   "type": "module",
@@ -14,7 +14,10 @@
   "author": "Dmytro Balytskyi <dmytro.balytskyi@gmail.com>",
   "license": "MIT",
   "dependencies": {
-    "vuetify": "^3.8.1"
+    "vuetify": "^3.8.0"
+  },
+  "peerDependencies": {
+    "vuetify": "^3.8.0"
   },
   "repository": {
     "type": "git",
