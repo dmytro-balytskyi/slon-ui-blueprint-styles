@@ -1,4 +1,4 @@
-import { VBtn } from 'vuetify/lib/components/VBtn/index.js'
+import { VBtn } from 'vuetify/components'
 
 const blueprint = {
   aliases: {
