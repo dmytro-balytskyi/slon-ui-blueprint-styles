@@ -1,11 +1,4 @@
-import { VBtn } from 'vuetify/components'
-
 const blueprint = {
-  aliases: {
-    VBtnIcon: VBtn,
-    SBtn: VBtn,
-    FBtn: VBtn
-  },
   defaults: {
     global: {
       rounded: 'md'
