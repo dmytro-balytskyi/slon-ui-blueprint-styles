@@ -389,3 +389,8 @@
   height: 100% !important;
   width: 100% !important;
 }
+
+.v-icon.list-icon {
+  opacity: var(--v-medium-emphasis-opacity);
+  color: rgba(var(--v-theme-on-surface), var(--v-high-emphasis-opacity));
+}
