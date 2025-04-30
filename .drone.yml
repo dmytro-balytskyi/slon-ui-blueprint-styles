@@ -13,6 +13,8 @@ steps:
         from_secret: npm_password
       email:
         from_secret: npm_email
+      token:
+        from_secret: npm_token
   
   - name: notify
     image: registry.taxi-beton.ua/drone-telegram:latest
@@ -33,6 +35,6 @@ trigger:
     - push
 ---
 kind: signature
-hmac: f1fb2a96cd7d99269e22ad12d76e51409576a28007d4340cbada122349667295
+hmac: e84ccb8a8b9eba3081c05d14200044dab271df1e8709753c737607b7c165e56c
 
 ...
