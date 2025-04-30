@@ -375,6 +375,7 @@
   }
 }
 
+// z-index для випадаючих списків v-select та v-combobox
 .v-menu:has(.v-combobox__content),
 .v-menu:has(.v-select__content),
 .custom-z-index {
@@ -395,10 +396,10 @@
   color: rgba(var(--v-theme-on-surface), var(--v-high-emphasis-opacity));
 }
 
+// стиль текста середньої видимості
 .text-med-emphasis {
   color: rgba(var(--v-theme-on-surface), 0.6);
 }
-
 .v-theme--dark .text-med-emphasis {
   color: rgba(var(--v-theme-on-surface), 0.9);
 }
