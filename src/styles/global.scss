@@ -394,3 +394,11 @@
   opacity: var(--v-medium-emphasis-opacity);
   color: rgba(var(--v-theme-on-surface), var(--v-high-emphasis-opacity));
 }
+
+.text-med-emphasis {
+  color: rgba(var(--v-theme-on-surface), 0.6);
+}
+
+.v-theme--dark .text-med-emphasis {
+  color: rgba(var(--v-theme-on-surface), 0.9);
+}

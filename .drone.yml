@@ -1,0 +1,38 @@
+---
+kind: pipeline
+type: kubernetes
+name: slon-ui-blueprint-styles
+
+steps:
+  - name: publish
+    image: plugins/npm
+    settings:
+      username:
+        from_secret: npm_username
+      password:
+        from_secret: npm_password
+      email:
+        from_secret: npm_email
+  
+  - name: notify
+    image: registry.taxi-beton.ua/drone-telegram:latest
+    pull: always
+    settings:
+      message_file: npm_message
+      token:
+        from_secret: telegram_token
+      to:
+        from_secret: telegram_to
+    when:
+      status: [ success, failure ]
+
+trigger:
+  branch:
+    - master
+  event:
+    - push
+---
+kind: signature
+hmac: f1fb2a96cd7d99269e22ad12d76e51409576a28007d4340cbada122349667295
+
+...
