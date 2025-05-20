@@ -296,7 +296,7 @@ const blueprint = {
     },
 
     VMain: {
-      style: '--v-layout-bottom: 0px;'
+      style: '--v-layout-bottom: 0px !important;'
     }
   }
 }
