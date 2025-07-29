@@ -402,7 +402,9 @@
   width: 100% !important;
 }
 
-.v-icon.list-icon {
+.v-icon.list-icon,
+.s-bottom-menu .v-btn .v-icon,
+.v-bottom-navigation .v-btn .v-icon{
   opacity: var(--v-medium-emphasis-opacity);
   color: rgba(var(--v-theme-on-surface), var(--v-high-emphasis-opacity));
 }
