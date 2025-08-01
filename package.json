@@ -1,6 +1,6 @@
 {
   "name": "@slonbeton/slon-ui-blueprint-styles",
-  "version": "0.0.26",
+  "version": "0.0.27",
   "description": "SlonBeton blueprint and global scss",
   "main": "./src/index.js",
   "type": "module",
