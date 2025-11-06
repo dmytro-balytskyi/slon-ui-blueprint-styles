@@ -8,7 +8,7 @@ const blueprint = {
       icon: 'icon',
       rounded: 0,
       VIcon: {
-        size: 48
+        size: 32
       }
     },
 
