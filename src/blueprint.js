@@ -291,6 +291,13 @@ const blueprint = {
       hideDetails: true
     },
 
+    VTimeline: {
+      density: 'compact',
+      align: 'start',
+      side: 'end',
+      truncateLine: 'both'
+    },
+
     VAppBar: {
       height: 72
     },
