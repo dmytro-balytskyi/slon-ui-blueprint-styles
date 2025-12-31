@@ -1,4 +1,5 @@
 // маска пошукового фрагменту (акцентування малиновим кольором)
+.slon-selected__mask,
 .v-combobox__mask,
 .v-autocomplete__mask {
   background: rgb(var(--v-theme-selected)) !important;

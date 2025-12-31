@@ -1,11 +1,11 @@
 {
   "name": "@slonbeton/slon-ui-blueprint-styles",
-  "version": "0.0.24",
+  "version": "0.0.30",
   "description": "SlonBeton blueprint and global scss",
   "main": "./src/index.js",
   "type": "module",
   "scripts": {
-    "patch": "yarn version --patch"
+    "patch": "pnpm version patch"
   },
   "keywords": [
     "slonbeton",

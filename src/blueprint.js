@@ -8,7 +8,7 @@ const blueprint = {
       icon: 'icon',
       rounded: 0,
       VIcon: {
-        size: 48
+        size: 32
       }
     },
 
@@ -298,6 +298,13 @@ const blueprint = {
       color: 'success',
       density: 'comfortable',
       hideDetails: true
+    },
+
+    VTimeline: {
+      density: 'compact',
+      align: 'center',
+      side: 'end',
+      truncateLine: 'both'
     },
 
     VAppBar: {

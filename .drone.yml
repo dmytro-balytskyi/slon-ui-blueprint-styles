@@ -27,6 +27,18 @@ steps:
         from_secret: telegram_to
     when:
       status: [ success, failure ]
+  
+  - name: trigger
+    image: plugins/downstream
+    settings:
+      server:
+        from_secret: drone_server
+      token:
+        from_secret: drone_token
+      repositories:
+        - dmytro-balytskyi/slon-ui-menu24
+    when:
+      status: [success]
 
 trigger:
   branch:
@@ -35,6 +47,6 @@ trigger:
     - push
 ---
 kind: signature
-hmac: e84ccb8a8b9eba3081c05d14200044dab271df1e8709753c737607b7c165e56c
+hmac: fc6a95a2bf8aebd78b5ff845d7438a341b5dc04f039d042cbd92ac24ad4a065f
 
 ...
