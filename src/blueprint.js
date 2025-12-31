@@ -194,7 +194,16 @@ const blueprint = {
         VIcon: {
           size: 12
         }
-      }
+      },
+      VIcon: {
+        size: 24
+      },
+      VLabel: {
+        class: 'text-uppercase'
+      },
+      variant: 'underlined',
+      clearIcon: 'mdi-close',
+      active: true
     },
 
     VFileInput: {
