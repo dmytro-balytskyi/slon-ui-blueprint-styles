@@ -302,7 +302,6 @@ const blueprint = {
 
     VTimeline: {
       density: 'compact',
-      align: 'start',
       justify: 'left',
       side: 'end',
       direction: 'vertical',
