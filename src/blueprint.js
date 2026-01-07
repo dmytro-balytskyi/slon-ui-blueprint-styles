@@ -302,9 +302,12 @@ const blueprint = {
 
     VTimeline: {
       density: 'compact',
-      align: 'center',
+      align: 'start',
+      justify: 'left',
       side: 'end',
-      truncateLine: 'both'
+      direction: 'vertical',
+      truncateLine: 'both',
+      hideOpposite: true
     },
 
     VAppBar: {
