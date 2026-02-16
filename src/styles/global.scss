@@ -109,11 +109,11 @@
 // регулювання прозорості іконок у input полях та у списках
 .v-theme--light {
 
-  .v-list-item__prepend .v-icon,
-  .v-input__prepend .v-icon,
-  .v-input__append .v-icon,
-  .v-field__prepend-inner .v-icon,
-  .v-field__append-inner .v-icon {
+  .v-list-item__prepend>.v-icon,
+  .v-input__prepend>.v-icon,
+  .v-input__append>.v-icon,
+  .v-field__prepend-inner>.v-icon,
+  .v-field__append-inner>.v-icon {
     opacity: 0.65;
   }
 }
