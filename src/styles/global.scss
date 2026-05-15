@@ -415,3 +415,14 @@
 .v-theme--dark .text-med-emphasis {
   color: rgba(var(--v-theme-on-surface), 0.9);
 }
+
+.unselectable {
+  user-select: none;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+
+  .selectable {
+    user-select: text;
+  }
+}
