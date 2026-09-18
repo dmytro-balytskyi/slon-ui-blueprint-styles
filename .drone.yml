@@ -4,6 +4,16 @@ type: kubernetes
 name: slon-ui-blueprint-styles
 
 steps:
+  # Тимчасова діагностика (2026-09-18): чи віддає Drone крокам git-облікові дані клону
+  # (DRONE_NETRC_*), на які спирається bump-host. Друкує лише кількість та імена змінних.
+  - name: probe-netrc
+    image: node:22-alpine
+    commands:
+      - echo "DRONE_REPO_PRIVATE=$DRONE_REPO_PRIVATE"
+      - echo "DRONE_NETRC_* count:" $(env | grep -c '^DRONE_NETRC_' || true)
+      - env | grep '^DRONE_NETRC_' | cut -d= -f1 || true
+      - echo "DRONE_NETRC_MACHINE=$DRONE_NETRC_MACHINE"
+
   - name: publish
     image: plugins/npm
     settings:
@@ -53,6 +63,6 @@ trigger:
     - push
 ---
 kind: signature
-hmac: f5b9de8445a2eaba917cc30c5a1c114bcb76b6fe12d35ff4cc61a32063bf9807
+hmac: 9509006d275cf0613a72bd8b6aa96116a00fd17ac2bebf5b3403cfd322fe0ee3
 
 ...
