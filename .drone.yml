@@ -15,7 +15,24 @@ steps:
         from_secret: npm_email
       token:
         from_secret: npm_token
-  
+
+  # Доставка в хост: коміт bump lock у slon-ui-menu24 (замість plugins/downstream, який
+  # лише перебілдовував хост із pnpm update --latest поза git). Деталі — scripts/bump-host.sh.
+  - name: bump-host
+    image: node:22-alpine
+    environment:
+      DEPLOY_KEY:
+        from_secret: menu24_deploy_key
+      TARGET_REPO: git@github.com:dmytro-balytskyi/slon-ui-menu24.git
+      REGISTRY: https://npm.taxi-beton.ua
+    commands:
+      - apk add --no-cache git openssh-client
+      - corepack enable
+      - corepack prepare pnpm@10.20.0 --activate
+      - sh scripts/bump-host.sh
+    when:
+      status: [success]
+
   - name: notify
     image: registry.taxi-beton.ua/drone-telegram:latest
     pull: always
@@ -27,18 +44,6 @@ steps:
         from_secret: telegram_to
     when:
       status: [ success, failure ]
-  
-  - name: trigger
-    image: plugins/downstream
-    settings:
-      server:
-        from_secret: drone_server
-      token:
-        from_secret: drone_token
-      repositories:
-        - dmytro-balytskyi/slon-ui-menu24
-    when:
-      status: [success]
 
 trigger:
   branch:
@@ -47,6 +52,6 @@ trigger:
     - push
 ---
 kind: signature
-hmac: fc6a95a2bf8aebd78b5ff845d7438a341b5dc04f039d042cbd92ac24ad4a065f
+hmac: dba012f194b0559e4f5c12b4c6278798c01c12a85e76349fffeac28a38edf53e
 
 ...
