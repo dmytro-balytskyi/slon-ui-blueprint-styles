@@ -18,12 +18,13 @@ steps:
 
   # Доставка в хост: коміт bump lock у slon-ui-menu24 (замість plugins/downstream, який
   # лише перебілдовував хост із pnpm update --latest поза git). Деталі — scripts/bump-host.sh.
+  # Пуш іде git-обліковими даними самого пайплайну (DRONE_NETRC_*, Drone віддає їх крокам
+  # для приватних репо) — нового секрету не треба. Щоб звузити доступ до одного репо,
+  # додати deploy key з правом запису на menu24 і секрет: DEPLOY_KEY: { from_secret: menu24_deploy_key }.
   - name: bump-host
     image: node:22-alpine
     environment:
-      DEPLOY_KEY:
-        from_secret: menu24_deploy_key
-      TARGET_REPO: git@github.com:dmytro-balytskyi/slon-ui-menu24.git
+      TARGET: dmytro-balytskyi/slon-ui-menu24
       REGISTRY: https://npm.taxi-beton.ua
     commands:
       - apk add --no-cache git openssh-client
@@ -52,6 +53,6 @@ trigger:
     - push
 ---
 kind: signature
-hmac: dba012f194b0559e4f5c12b4c6278798c01c12a85e76349fffeac28a38edf53e
+hmac: f5b9de8445a2eaba917cc30c5a1c114bcb76b6fe12d35ff4cc61a32063bf9807
 
 ...

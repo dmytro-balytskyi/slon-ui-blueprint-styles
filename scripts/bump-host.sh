@@ -7,10 +7,15 @@
 # Ремоути оновлює tools/bump-blueprint-styles.ps1 у воркспейсі, коли зручно.
 #
 # Оточення:
-#   DEPLOY_KEY     приватний SSH-ключ deploy key з правом запису на цільове репо
-#                  (секрет Drone). Порожній — клон/пуш ідуть без ключа (локальна проба).
-#   TARGET_REPO    URL цільового репо (типово git@github.com:dmytro-balytskyi/slon-ui-menu24.git);
-#                  для локальної проби — шлях до клону.
+#   TARGET         owner/repo на GitHub (типово dmytro-balytskyi/slon-ui-menu24)
+#   TARGET_REPO    явний URL або локальний шлях цільового репо (для проби); якщо не
+#                  заданий — будується з TARGET за режимом доступу нижче
+#   DEPLOY_KEY     приватний SSH deploy key з правом запису на цільове репо (секрет
+#                  Drone; потрібен адмін репо на GitHub і в Drone). Якщо є — SSH.
+#   DRONE_NETRC_USERNAME / DRONE_NETRC_PASSWORD
+#                  git-облікові дані самого пайплайну: Drone віддає їх крокам для
+#                  приватних репо (токен того, хто активував репо в Drone). Без
+#                  DEPLOY_KEY пуш іде ними по HTTPS — нового секрету не треба.
 #   TARGET_BRANCH  гілка (типово master)
 #   REGISTRY       npm-реєстр (типово https://npm.taxi-beton.ua)
 #   VERSION        версія для доставки (типово — з package.json цього репо)
@@ -20,7 +25,7 @@ set -eu
 
 PKG='@slonbeton/slon-ui-blueprint-styles'
 VERSION=${VERSION:-$(node -p "require('./package.json').version")}
-TARGET_REPO=${TARGET_REPO:-git@github.com:dmytro-balytskyi/slon-ui-menu24.git}
+TARGET=${TARGET:-dmytro-balytskyi/slon-ui-menu24}
 TARGET_BRANCH=${TARGET_BRANCH:-master}
 REGISTRY=${REGISTRY:-https://npm.taxi-beton.ua}
 PNPM=${PNPM:-pnpm}
@@ -42,7 +47,7 @@ until $PNPM view "$PKG@$VERSION" version --registry "$REGISTRY" >/dev/null 2>&1;
 done
 log "$PKG@$VERSION is in $REGISTRY"
 
-# 2. SSH-ключ для клону й пушу (лише якщо заданий).
+# 2. Доступ до цільового репо: deploy key (SSH) → облікові дані пайплайну (HTTPS) → явний TARGET_REPO.
 if [ -n "${DEPLOY_KEY:-}" ]; then
   mkdir -p "$HOME/.ssh"
   chmod 700 "$HOME/.ssh"
@@ -50,6 +55,20 @@ if [ -n "${DEPLOY_KEY:-}" ]; then
   chmod 600 "$HOME/.ssh/id_deploy"
   ssh-keyscan -t ed25519,ecdsa,rsa github.com >> "$HOME/.ssh/known_hosts" 2>/dev/null
   export GIT_SSH_COMMAND="ssh -i $HOME/.ssh/id_deploy -o IdentitiesOnly=yes"
+  TARGET_REPO=${TARGET_REPO:-git@github.com:$TARGET.git}
+  log "auth: deploy key (ssh)"
+elif [ -n "${DRONE_NETRC_PASSWORD:-}" ]; then
+  # Значення не друкуємо і не кладемо в URL: git читає ~/.netrc сам.
+  printf 'machine %s\nlogin %s\npassword %s\n' \
+    "${DRONE_NETRC_MACHINE:-github.com}" "${DRONE_NETRC_USERNAME:-x-access-token}" "$DRONE_NETRC_PASSWORD" > "$HOME/.netrc"
+  chmod 600 "$HOME/.netrc"
+  TARGET_REPO=${TARGET_REPO:-https://${DRONE_NETRC_MACHINE:-github.com}/$TARGET.git}
+  log "auth: pipeline netrc credentials (https)"
+elif [ -n "${TARGET_REPO:-}" ]; then
+  log "auth: none, using TARGET_REPO as given (local run)"
+else
+  log "ERROR: no DEPLOY_KEY, no DRONE_NETRC_PASSWORD and no TARGET_REPO — cannot reach $TARGET"
+  exit 1
 fi
 
 # 3. Клон цільового репо.
