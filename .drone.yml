@@ -4,16 +4,6 @@ type: kubernetes
 name: slon-ui-blueprint-styles
 
 steps:
-  # Тимчасова діагностика (2026-09-18): чи віддає Drone крокам git-облікові дані клону
-  # (DRONE_NETRC_*), на які спирається bump-host. Друкує лише кількість та імена змінних.
-  - name: probe-netrc
-    image: node:22-alpine
-    commands:
-      - echo "DRONE_REPO_PRIVATE=$DRONE_REPO_PRIVATE"
-      - echo "DRONE_NETRC_* count:" $(env | grep -c '^DRONE_NETRC_' || true)
-      - env | grep '^DRONE_NETRC_' | cut -d= -f1 || true
-      - echo "DRONE_NETRC_MACHINE=$DRONE_NETRC_MACHINE"
-
   - name: publish
     image: plugins/npm
     settings:
@@ -25,25 +15,7 @@ steps:
         from_secret: npm_email
       token:
         from_secret: npm_token
-
-  # Доставка в хост: коміт bump lock у slon-ui-menu24 (замість plugins/downstream, який
-  # лише перебілдовував хост із pnpm update --latest поза git). Деталі — scripts/bump-host.sh.
-  # Пуш іде git-обліковими даними самого пайплайну (DRONE_NETRC_*, Drone віддає їх крокам
-  # для приватних репо) — нового секрету не треба. Щоб звузити доступ до одного репо,
-  # додати deploy key з правом запису на menu24 і секрет: DEPLOY_KEY: { from_secret: menu24_deploy_key }.
-  - name: bump-host
-    image: node:22-alpine
-    environment:
-      TARGET: dmytro-balytskyi/slon-ui-menu24
-      REGISTRY: https://npm.taxi-beton.ua
-    commands:
-      - apk add --no-cache git openssh-client
-      - corepack enable
-      - corepack prepare pnpm@10.20.0 --activate
-      - sh scripts/bump-host.sh
-    when:
-      status: [success]
-
+  
   - name: notify
     image: registry.taxi-beton.ua/drone-telegram:latest
     pull: always
@@ -55,6 +27,18 @@ steps:
         from_secret: telegram_to
     when:
       status: [ success, failure ]
+  
+  - name: trigger
+    image: plugins/downstream
+    settings:
+      server:
+        from_secret: drone_server
+      token:
+        from_secret: drone_token
+      repositories:
+        - dmytro-balytskyi/slon-ui-menu24
+    when:
+      status: [success]
 
 trigger:
   branch:
@@ -63,6 +47,6 @@ trigger:
     - push
 ---
 kind: signature
-hmac: 9509006d275cf0613a72bd8b6aa96116a00fd17ac2bebf5b3403cfd322fe0ee3
+hmac: fc6a95a2bf8aebd78b5ff845d7438a341b5dc04f039d042cbd92ac24ad4a065f
 
 ...
