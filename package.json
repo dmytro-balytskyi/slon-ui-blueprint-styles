@@ -5,7 +5,8 @@
   "main": "./src/index.js",
   "type": "module",
   "scripts": {
-    "patch": "pnpm version patch"
+    "patch": "pnpm version patch",
+    "test": "vitest run"
   },
   "keywords": [
     "slonbeton",
@@ -16,5 +17,9 @@
   "repository": {
     "type": "git",
     "url": "https://github.com/dmytro-balytskyi/slon-ui-blueprint-styles.git"
+  },
+  "devDependencies": {
+    "sass": "^1.99.0",
+    "vitest": "^1.6.1"
   }
 }
