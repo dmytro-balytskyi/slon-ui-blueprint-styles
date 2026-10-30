@@ -375,6 +375,35 @@
   }
 }
 
+// смуга статусу зліва на картці (замовлення, ліди, задачі, повідомлення): колір — модифікатором з теми, без
+// модифікатора — колір рамки Vuetify (скелетон). Колір іде змінною, а не border-left-color: модифікатор не змагається
+// специфічністю з .v-card. ТЗ blueprint 5.1.
+.s-card-stripe {
+  --s-stripe-color: var(--v-border-color);
+  --s-stripe-opacity: var(--v-border-opacity);
+  border-left: 11px solid rgba(var(--s-stripe-color), var(--s-stripe-opacity)) !important;
+}
+
+@each $color in primary, secondary, success, error, warning, info {
+  .s-card-stripe--#{$color} {
+    --s-stripe-color: var(--v-theme-#{$color});
+    --s-stripe-opacity: 1;
+  }
+}
+
+// статус «перенесено» в замовленнях — той самий #616161 в обох темах (рішення користувача 2026-10-31)
+.s-card-stripe--grey {
+  --s-stripe-color: 97, 97, 97;
+  --s-stripe-opacity: 1;
+}
+
+// SortableJS (vue-draggable-plus) на мить dragstart вішає .sortable-drag на рядок, поки браузер знімає з нього
+// зображення для перетягування: рядок прозорий — під курсором нічого не летить, рядок пересувається в самому списку.
+// Однаково в усіх списках (рішення користувача 2026-10-31). ТЗ blueprint 5.4.
+.sortable-drag {
+  opacity: 0 !important;
+}
+
 // невідомо?
 .v-select {
   .v-field__input {

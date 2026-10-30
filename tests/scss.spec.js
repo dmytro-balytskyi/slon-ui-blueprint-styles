@@ -78,4 +78,34 @@ describe('global.scss', () => {
     expect(rule.body).toMatch(/color:\s*#fff;/)
     expect(rule.body).toMatch(/padding:\s*0 2px;/)
   })
+
+  // ТЗ blueprint 5.1: смуга статусу зліва на картці. Колір — змінною, тож модифікатор не змагається
+  // специфічністю з `.v-card`; без модифікатора — колір рамки Vuetify (так виглядає скелетон).
+  it('.s-card-stripe: смуга 11px кольором зі змінної, модифікатори — кольори теми й сірий #616161', () => {
+    const rules = cssRules(compileScss('src/styles/global.scss').css)
+    const body = (selector) => rules.find(({ selectors }) => selectors.includes(selector))?.body
+
+    expect(body('.s-card-stripe'), 'немає правила .s-card-stripe').toMatch(
+      /border-left:\s*11px solid rgba\(var\(--s-stripe-color\), var\(--s-stripe-opacity\)\) !important;/
+    )
+    expect(body('.s-card-stripe')).toMatch(/--s-stripe-color:\s*var\(--v-border-color\);/)
+    for (const color of ['primary', 'secondary', 'success', 'error', 'warning', 'info']) {
+      expect(body(`.s-card-stripe--${color}`), `немає модифікатора --${color}`).toMatch(
+        new RegExp(`--s-stripe-color:\\s*var\\(--v-theme-${color}\\);`)
+      )
+    }
+    // статус «перенесено» в замовленнях — той самий #616161, що був, у світлій і темній темі
+    expect(body('.s-card-stripe--grey'), 'немає модифікатора --grey').toMatch(/--s-stripe-color:\s*97, 97, 97;/)
+  })
+
+  // ТЗ blueprint 5.4: SortableJS на мить dragstart вішає `.sortable-drag` на рядок, поки браузер знімає
+  // «привида» перетягування; прозорий рядок — однаково в усіх списках (рішення користувача 2026-10-31).
+  it('.sortable-drag: «привид» перетягування прозорий', () => {
+    const rule = cssRules(compileScss('src/styles/global.scss').css).find(({ selectors }) =>
+      selectors.includes('.sortable-drag')
+    )
+
+    expect(rule, 'немає правила .sortable-drag').toBeDefined()
+    expect(rule.body).toMatch(/opacity:\s*0 !important;/)
+  })
 })
