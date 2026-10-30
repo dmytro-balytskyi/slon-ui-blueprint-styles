@@ -435,3 +435,9 @@
     user-select: text;
   }
 }
+/* Емодзі в сірому підписі стану («⏳ завантаження повідомлень..») — повний колір теми без альфи.
+   Інакше емодзі успадковує напівпрозорість `text-medium-emphasis` і виглядає бляклим.
+   Правило — slon24-docs guides/frontends/ui-patterns.md §Підписи стану списку. */
+.state-emoji {
+  color: rgb(var(--v-theme-on-surface));
+}
