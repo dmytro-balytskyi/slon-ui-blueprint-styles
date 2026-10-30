@@ -64,4 +64,18 @@ describe('global.scss', () => {
       /@media \(hover: none\)\s*\{\s*\.s-hover-reveal \.s-hover-reveal__target\s*\{\s*opacity:\s*1;\s*\}/
     )
   })
+
+  // ТЗ blueprint 5.2: збіг пошуку сервер віддає в `<em>`; без спільного правила кожен ремоут стилізував
+  // його сам, а messages — голим `em` на весь хост.
+  it('.s-search-highlight em: збіг пошуку — малиновий фон теми, білий текст, без курсиву', () => {
+    const rule = cssRules(compileScss('src/styles/global.scss').css).find(({ selectors }) =>
+      selectors.includes('.s-search-highlight em')
+    )
+
+    expect(rule, 'немає правила з селектором .s-search-highlight em').toBeDefined()
+    expect(rule.body).toMatch(/font-style:\s*normal;/)
+    expect(rule.body).toMatch(/background-color:\s*rgb\(var\(--v-theme-selected\)\);/)
+    expect(rule.body).toMatch(/color:\s*#fff;/)
+    expect(rule.body).toMatch(/padding:\s*0 2px;/)
+  })
 })

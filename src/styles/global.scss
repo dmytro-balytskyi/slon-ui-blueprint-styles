@@ -6,6 +6,15 @@
   color: #fff;
 }
 
+// збіг пошуку з сервера — `<em>` у тексті картки; клас ставиться на контейнер v-html. Той самий малиновий, що й
+// маска вище: рішення про контраст (ТЗ blueprint 3.12) — для обох одразу. ТЗ blueprint 5.2.
+.s-search-highlight em {
+  font-style: normal;
+  background-color: rgb(var(--v-theme-selected));
+  color: #fff;
+  padding: 0 2px;
+}
+
 // відступ в слотах v-list-item по замовчуванню
 .v-list-item__prepend,
 .v-list-item__append {
