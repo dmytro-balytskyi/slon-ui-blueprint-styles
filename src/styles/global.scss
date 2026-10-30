@@ -344,6 +344,28 @@
   }
 }
 
+// дія рядка (кнопка, «⋮»), видима лише під курсором: рядок — .s-hover-reveal, дія — .s-hover-reveal__target.
+// Видима й тоді, коли фокус у рядку (Tab), і завжди на пристроях без наведення — інакше на дотику прозора дія
+// клікабельна, але невидима. З .field-hover-handle не злито: там display, прихована іконка не займає місця —
+// інша розкладка. ТЗ blueprint 5.3; slon24-docs guides/frontends/ui-patterns.md §Класи й утиліти.
+.s-hover-reveal {
+  .s-hover-reveal__target {
+    opacity: 0;
+    transition: opacity 0.15s ease;
+  }
+
+  &:hover .s-hover-reveal__target,
+  &:focus-within .s-hover-reveal__target {
+    opacity: 1;
+  }
+}
+
+@media (hover: none) {
+  .s-hover-reveal .s-hover-reveal__target {
+    opacity: 1;
+  }
+}
+
 // невідомо?
 .v-select {
   .v-field__input {

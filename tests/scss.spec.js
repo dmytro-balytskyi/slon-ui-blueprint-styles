@@ -39,4 +39,29 @@ describe('global.scss', () => {
     expect(rule, 'немає правила з селектором .v-overlay.v-tooltip').toBeDefined()
     expect(rule.body).toMatch(/z-index:\s*10000\s*!important/)
   })
+
+  // ТЗ blueprint 5.3: дія рядка видима лише під курсором. Без запасного варіанта для дотику
+  // прозора ціль на телефоні клікабельна, але невидима; з клавіатури її показує фокус у рядку.
+  it('.s-hover-reveal: ціль прихована, під курсором і у фокусі видима, на дотику — завжди', () => {
+    const { css } = compileScss('src/styles/global.scss')
+    const rules = cssRules(css)
+    const target = '.s-hover-reveal .s-hover-reveal__target'
+
+    // перше правило з цим селектором — базове; друге, з тим самим, — у @media нижче
+    const hidden = rules.find(({ selectors }) => selectors.includes(target))
+    expect(hidden, `немає правила з селектором ${target}`).toBeDefined()
+    expect(hidden.body).toMatch(/opacity:\s*0;/)
+    expect(hidden.body).toMatch(/transition:\s*opacity/)
+
+    const shown = rules.find(({ selectors }) =>
+      selectors.includes('.s-hover-reveal:hover .s-hover-reveal__target')
+    )
+    expect(shown, 'немає правила для :hover').toBeDefined()
+    expect(shown.selectors).toContain('.s-hover-reveal:focus-within .s-hover-reveal__target')
+    expect(shown.body).toMatch(/opacity:\s*1;/)
+
+    expect(css).toMatch(
+      /@media \(hover: none\)\s*\{\s*\.s-hover-reveal \.s-hover-reveal__target\s*\{\s*opacity:\s*1;\s*\}/
+    )
+  })
 })
