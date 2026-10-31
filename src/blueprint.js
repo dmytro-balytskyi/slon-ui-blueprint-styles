@@ -1,3 +1,36 @@
+// Розміри іконок: великі — кнопки, вкладки, навігація, списки; середні — поля, перемикачі, групи списків.
+const ICON_L = 32
+const ICON_M = 24
+
+// Поля вводу. У VFileInput немає пропси clearIcon, тому два рівні: clearIcon: undefined лишив би ключ в об'єкті.
+const fieldBase = {
+  VLabel: {
+    class: 'text-uppercase'
+  },
+  VIcon: {
+    size: ICON_M
+  },
+  variant: 'underlined',
+  active: true
+}
+
+const fieldDefaults = { ...fieldBase, clearIcon: 'mdi-close' }
+
+// Список у меню полів вибору — іконки середні, а не ICON_L, як у VList.
+const menuListIcon = {
+  VList: {
+    VIcon: { size: ICON_M }
+  }
+}
+
+// Перемикачі. У VRadio немає пропси hideDetails, тому теж два рівні.
+const selectionBase = {
+  color: 'success',
+  density: 'comfortable'
+}
+
+const selectionDefaults = { ...selectionBase, hideDetails: true }
+
 const blueprint = {
   defaults: {
     global: {
@@ -8,7 +41,7 @@ const blueprint = {
       icon: true,
       rounded: 0,
       VIcon: {
-        size: 32
+        size: ICON_L
       }
     },
 
@@ -22,7 +55,7 @@ const blueprint = {
       rounded: 0,
       height: 48,
       VIcon: {
-        size: 32
+        size: ICON_L
       },
       style: {
         fontSize: '16px'
@@ -35,7 +68,7 @@ const blueprint = {
       rounded: 0,
       height: 48,
       VIcon: {
-        size: 32
+        size: ICON_L
       },
       style: {
         fontSize: '16px'
@@ -47,7 +80,7 @@ const blueprint = {
       color: 'success',
       variant: 'text',
       VIcon: {
-        size: 32
+        size: ICON_L
       }
     },
 
@@ -60,7 +93,7 @@ const blueprint = {
       size: 'large',
       appear: true,
       VIcon: {
-        size: 32
+        size: ICON_L
       }
     },
 
@@ -73,7 +106,7 @@ const blueprint = {
         rounded: 'circle'
       },
       VIcon: {
-        size: 32
+        size: ICON_L
       }
     },
 
@@ -93,7 +126,7 @@ const blueprint = {
 
     VTab: {
       VIcon: {
-        size: 32
+        size: ICON_L
       },
       variant: 'text'
     },
@@ -123,7 +156,7 @@ const blueprint = {
     VBottomNavigation: {
       height: 60,
       VIcon: {
-        size: 32
+        size: ICON_L
       },
       grow: true
     },
@@ -148,147 +181,72 @@ const blueprint = {
       slim: true,
       rounded: 0,
       activatable: true,
-      VIcon: { size: 32 } // основний розмір іконок у VList
+      VIcon: { size: ICON_L }
     },
 
     VListGroup: {
-      VIcon: { size: 24 } // іконки у VListGroup
+      VIcon: { size: ICON_M }
     },
 
-    VTextField: {
-      VIcon: {
-        size: 24
-      },
-      VLabel: {
-        class: 'text-uppercase'
-      },
-      variant: 'underlined',
-      clearIcon: 'mdi-close',
-      active: true
-    },
+    VTextField: { ...fieldDefaults },
 
-    VTextarea: {
-      VIcon: {
-        size: 24
-      },
-      VLabel: {
-        class: 'text-uppercase'
-      },
-      variant: 'underlined',
-      clearIcon: 'mdi-close',
-      active: true
-    },
+    VTextarea: { ...fieldDefaults },
 
     VNumberInput: {
+      ...fieldDefaults,
       VBtn: {
         width: 16,
         VIcon: {
           size: 12
         }
-      },
-      VIcon: {
-        size: 24
-      },
-      VLabel: {
-        class: 'text-uppercase'
-      },
-      variant: 'underlined',
-      clearIcon: 'mdi-close',
-      active: true
+      }
     },
 
-    VFileInput: {
-      VLabel: {
-        class: 'text-uppercase'
-      },
-      VIcon: {
-        size: 24
-      },
-      variant: 'underlined',
-      active: true
-    },
+    VFileInput: { ...fieldBase },
 
+    // Не fieldDefaults: підпис та іконка поля задані під VTextField (ТЗ blueprint 3.5 — структуру не міняти).
     VSelect: {
       VTextField: {
         VLabel: {
           class: 'text-uppercase'
         },
         VIcon: {
-          size: 24 // Розмір іконок для VSelect
+          size: ICON_M
         }
       },
       variant: 'underlined',
       clearIcon: 'mdi-close',
       active: true,
-      VMenu: {
-        VList: {
-          VIcon: { size: 24 } // скидання розміру іконок у VMenu > VList
-        }
-      }
+      VMenu: menuListIcon
     },
 
     VCombobox: {
-      VLabel: {
-        class: 'text-uppercase'
-      },
-      VIcon: {
-        size: 24 // розмір іконок для VCombobox
-      },
-      variant: 'underlined',
-      clearIcon: 'mdi-close',
-      active: true,
-      VMenu: {
-        VList: {
-          VIcon: { size: 24 } // скидання розміру іконок у VMenu > VList
-        }
-      }
+      ...fieldDefaults,
+      VMenu: menuListIcon
     },
 
     VAutocomplete: {
-      VLabel: {
-        class: 'text-uppercase'
-      },
-      VIcon: {
-        size: 24
-      },
-      variant: 'underlined',
-      clearIcon: 'mdi-close',
-      active: true,
-      VMenu: {
-        VList: {
-          VIcon: { size: 24 } // скидання розміру іконок у VMenu > VList
-        }
-      }
+      ...fieldDefaults,
+      VMenu: menuListIcon
     },
 
-    VSwitch: {
-      color: 'success',
-      density: 'comfortable',
-      hideDetails: true
-    },
+    VSwitch: { ...selectionDefaults },
 
     VCheckbox: {
-      color: 'success',
-      density: 'comfortable',
-      hideDetails: true,
+      ...selectionDefaults,
       VIcon: {
-        size: 24
+        size: ICON_M
       }
     },
 
     VRadio: {
-      color: 'success',
-      density: 'comfortable',
+      ...selectionBase,
       VIcon: {
-        size: 24
+        size: ICON_M
       }
     },
 
-    VRadioGroup: {
-      color: 'success',
-      density: 'comfortable',
-      hideDetails: true
-    },
+    VRadioGroup: { ...selectionDefaults },
 
     VTimeline: {
       density: 'compact',
