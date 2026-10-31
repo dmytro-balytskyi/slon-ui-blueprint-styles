@@ -24,6 +24,9 @@
 }
 
 // колір іконок у кнопках по замовчуванню (сірий)
+// ⚠️ [class*='text-'] задумано для кольорових text-primary тощо, але ловить і типографічні text-*
+// (text-none, text-uppercase, text-body-2…): з таким класом на v-btn іконка лишається кольору тексту,
+// а не сірою. Типографію на кнопку не вішати — ставити на вміст усередині.
 .v-btn.v-theme--light:not([class*='bg-']):not(.f-btn):not(.v-tab--selected):not([class*='text-']) {
   .v-icon {
     color: #757575 !important;
@@ -39,21 +42,13 @@
 // slot:details (слот повідомлень) у v-text-field
 .v-messages {
   top: -6px;
-  /* підняли вище */
   left: 2px;
-  /* подвинули правіше */
   text-transform: lowercase;
-  /* текст завжди у нижньому регістрі */
   white-space: nowrap;
-  /* забороняє переноси */
   overflow: hidden;
-  /* ховає текст, що виходить за межі */
   text-overflow: ellipsis;
-  /* додає три крапки для тексту, що обрізається */
   max-width: 100%;
-  /* обмежує ширину в межах контейнера */
   box-sizing: border-box;
-  /* враховує padding і border у ширині */
 }
 
 // розташування кастомного тексту v-messages (слот details у v-textfield)
@@ -62,11 +57,8 @@
   left: 0;
   top: -6px;
   white-space: nowrap;
-  /* забороняємо перенос тексту */
   overflow: hidden;
-  /* ховаємо текст, що виходить за межі */
   text-overflow: ellipsis;
-  /* додаємо три крапки для обрізаного тексту */
 }
 
 // відступи до prepend та append слотів у v-text-field
@@ -110,9 +102,7 @@
 // колір фону та тексту Активного класу у Списку
 .v-theme--light.v-list-item--active {
   background-color: #f2f2f2 !important;
-  /* змінюємо фон */
   color: #616161 !important;
-  /* змінюємо колір тексту */
 }
 
 // регулювання прозорості іконок у input полях та у списках
@@ -233,19 +223,16 @@
 .v-theme--dark {
   .v-tab__slider {
     background-color: #ff4081;
-    /* колір таба */
   }
 
   .v-tab-item--selected {
     color: #ff4081 !important;
-    /* колір тексту */
   }
 }
 
 // піднімаємо лічильник у всіх полях вводу (v-textarea, v-textfield тощо)
 .v-counter {
   transform: translateY(-8px);
-  /* Піднімає counter на 2 пікселя */
 }
 
 // колір іконок обраних айтемів в випадаючих списках селектів (checkbox success)

@@ -1,10 +1,6 @@
-/**
- * src/styles/settings.scss
- *
- * Configures SASS variables and Vuetify overwrites
- */
-
-// https://vuetifyjs.com/features/sass-variables/`
+// SCSS-змінні Vuetify для всіх UI: кожен споживач підключає цей файл як styles.configFile
+// у vite-plugin-vuetify. Змінна, якої у Vuetify немає, — помилка компіляції (тест tests/scss.spec.js).
+// Перелік змінних: https://vuetifyjs.com/features/sass-variables/
 @use 'vuetify/settings' with (
   $body-font-family: 'Roboto Condensed',
   $heading-font-family: 'Roboto Condensed',

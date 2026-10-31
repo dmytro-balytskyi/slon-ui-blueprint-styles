@@ -301,6 +301,9 @@ const blueprint = {
       height: 72
     },
 
+    // Свідомо (рішення 2026-10-31, ТЗ blueprint 3.4): v-main не резервує місце під v-bottom-navigation —
+    // застосунок компенсує нижнє меню сам (menu24 UsersView, shared SSnackbarQueue --v-layout-bottom: 60px,
+    // мобільні висоти calc(100dvh − N)). Зняти правило = зсунути 8 сторінок у 4 репо (ТЗ §1.1 B6).
     VMain: {
       style: '--v-layout-bottom: 0px !important;'
     }
