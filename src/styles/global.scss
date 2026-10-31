@@ -325,7 +325,8 @@
   max-width: 100% !important;
 }
 
-// фон тулбара
+// фон тулбара — лише для Storybook shared (ExchangeRates, Weather): у застосунках класу немає, лишено
+// рішенням 2026-10-31, щоб не випускати shared заради прикладів (ТЗ blueprint 3.2)
 .v-toolbar.custom-toolbar {
   background: #fff;
 }
@@ -409,42 +410,6 @@
   }
 }
 
-.two-rows {
-  .v-field__input {
-    row-gap: 0px !important;
-    max-height: 90px;
-    overflow-y: auto;
-    scrollbar-width: thin;
-  }
-}
-
-.three-rows {
-  .v-field__input {
-    row-gap: 0px !important;
-    max-height: 124px;
-    overflow-y: auto;
-    scrollbar-width: thin;
-  }
-}
-
-.four-rows {
-  .v-field__input {
-    row-gap: 0px !important;
-    max-height: 160px;
-    overflow-y: auto;
-    scrollbar-width: thin;
-  }
-}
-
-.five-rows {
-  .v-field__input {
-    row-gap: 0px !important;
-    max-height: 194px;
-    overflow-y: auto;
-    scrollbar-width: thin;
-  }
-}
-
 // z-index для випадаючих списків v-select та v-combobox
 .v-menu:has(.v-combobox__content),
 .v-menu:has(.v-select__content),
@@ -475,7 +440,8 @@
   color: rgba(var(--v-theme-on-surface), var(--v-high-emphasis-opacity));
 }
 
-// стиль текста середньої видимості
+// текст середньої видимості — лише для Storybook shared (приклад PageToolbar): заміна на Vuetify
+// text-medium-emphasis змінила б темну тему 0.9 → 0.7; лишено рішенням 2026-10-31 (ТЗ blueprint 3.2)
 .text-med-emphasis {
   color: rgba(var(--v-theme-on-surface), 0.6);
 }
@@ -483,16 +449,6 @@
   color: rgba(var(--v-theme-on-surface), 0.9);
 }
 
-.unselectable {
-  user-select: none;
-  -webkit-user-select: none;
-  -moz-user-select: none;
-  -ms-user-select: none;
-
-  .selectable {
-    user-select: text;
-  }
-}
 /* Емодзі в сірому підписі стану («⏳ завантаження повідомлень..») — повний колір теми без альфи.
    Інакше емодзі успадковує напівпрозорість `text-medium-emphasis` і виглядає бляклим.
    Правило — slon24-docs guides/frontends/ui-patterns.md §Підписи стану списку. */

@@ -421,34 +421,6 @@
   row-gap: 0px;
 }
 
-.two-rows .v-field__input {
-  row-gap: 0px !important;
-  max-height: 90px;
-  overflow-y: auto;
-  scrollbar-width: thin;
-}
-
-.three-rows .v-field__input {
-  row-gap: 0px !important;
-  max-height: 124px;
-  overflow-y: auto;
-  scrollbar-width: thin;
-}
-
-.four-rows .v-field__input {
-  row-gap: 0px !important;
-  max-height: 160px;
-  overflow-y: auto;
-  scrollbar-width: thin;
-}
-
-.five-rows .v-field__input {
-  row-gap: 0px !important;
-  max-height: 194px;
-  overflow-y: auto;
-  scrollbar-width: thin;
-}
-
 .v-menu:has(.v-combobox__content),
 .v-menu:has(.v-select__content),
 .custom-z-index {
@@ -479,16 +451,6 @@
 
 .v-theme--dark .text-med-emphasis {
   color: rgba(var(--v-theme-on-surface), 0.9);
-}
-
-.unselectable {
-  user-select: none;
-  -webkit-user-select: none;
-  -moz-user-select: none;
-  -ms-user-select: none;
-}
-.unselectable .selectable {
-  user-select: text;
 }
 
 /* Емодзі в сірому підписі стану («⏳ завантаження повідомлень..») — повний колір теми без альфи.
