@@ -1,0 +1,326 @@
+// Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
+
+exports[`знімки пакета > blueprint.defaults 1`] = `
+{
+  "FBtn": {
+    "VIcon": {
+      "size": 32,
+    },
+    "class": "f-btn",
+    "height": 48,
+    "rounded": 0,
+    "style": {
+      "fontSize": "16px",
+    },
+    "variant": "tonal",
+  },
+  "SBtn": {
+    "VIcon": {
+      "size": 32,
+    },
+    "class": "s-btn",
+    "height": 48,
+    "rounded": 0,
+    "style": {
+      "fontSize": "16px",
+    },
+    "variant": "text",
+  },
+  "VAppBar": {
+    "height": 72,
+  },
+  "VAutocomplete": {
+    "VIcon": {
+      "size": 24,
+    },
+    "VLabel": {
+      "class": "text-uppercase",
+    },
+    "VMenu": {
+      "VList": {
+        "VIcon": {
+          "size": 24,
+        },
+      },
+    },
+    "active": true,
+    "clearIcon": "mdi-close",
+    "variant": "underlined",
+  },
+  "VAvatar": {
+    "rounded": "circle",
+  },
+  "VBanner": {
+    "color": "primary",
+  },
+  "VBottomNavigation": {
+    "VIcon": {
+      "size": 32,
+    },
+    "grow": true,
+    "height": 60,
+  },
+  "VBtn": {
+    "rounded": 0,
+  },
+  "VBtnGroup": {
+    "rounded": 0,
+  },
+  "VBtnIcon": {
+    "VIcon": {
+      "size": 32,
+    },
+    "icon": "icon",
+    "rounded": 0,
+  },
+  "VBtnToggle": {
+    "VIcon": {
+      "size": 32,
+    },
+    "color": "success",
+    "rounded": 0,
+    "variant": "text",
+  },
+  "VCard": {
+    "rounded": 0,
+  },
+  "VCardTitle": {
+    "style": "user-select: none;",
+  },
+  "VCheckbox": {
+    "VIcon": {
+      "size": 24,
+    },
+    "color": "success",
+    "density": "comfortable",
+    "hideDetails": true,
+  },
+  "VChip": {
+    "class": "text-lowercase",
+    "closeIcon": "mdi-close",
+    "label": true,
+  },
+  "VCombobox": {
+    "VIcon": {
+      "size": 24,
+    },
+    "VLabel": {
+      "class": "text-uppercase",
+    },
+    "VMenu": {
+      "VList": {
+        "VIcon": {
+          "size": 24,
+        },
+      },
+    },
+    "active": true,
+    "clearIcon": "mdi-close",
+    "variant": "underlined",
+  },
+  "VFab": {
+    "VIcon": {
+      "size": 32,
+    },
+    "appear": true,
+    "color": "primary",
+    "size": "large",
+  },
+  "VFileInput": {
+    "VIcon": {
+      "size": 24,
+    },
+    "VLabel": {
+      "class": "text-uppercase",
+    },
+    "active": true,
+    "variant": "underlined",
+  },
+  "VList": {
+    "VIcon": {
+      "size": 32,
+    },
+    "activatable": true,
+    "class": "pa-0",
+    "rounded": 0,
+    "slim": true,
+    "style": "user-select: none;",
+  },
+  "VListGroup": {
+    "VIcon": {
+      "size": 24,
+    },
+  },
+  "VMain": {
+    "style": "--v-layout-bottom: 0px !important;",
+  },
+  "VNumberInput": {
+    "VBtn": {
+      "VIcon": {
+        "size": 12,
+      },
+      "width": 16,
+    },
+    "VIcon": {
+      "size": 24,
+    },
+    "VLabel": {
+      "class": "text-uppercase",
+    },
+    "active": true,
+    "clearIcon": "mdi-close",
+    "variant": "underlined",
+  },
+  "VRadio": {
+    "VIcon": {
+      "size": 24,
+    },
+    "color": "success",
+    "density": "comfortable",
+    "hideDetails": true,
+  },
+  "VRadioGroup": {
+    "color": "success",
+    "density": "comfortable",
+    "hideDetails": true,
+  },
+  "VRating": {
+    "VIcon": {
+      "class": "",
+    },
+    "activeColor": "secondary",
+    "clearable": true,
+    "color": "grey-darken-1",
+    "density": "comfortable",
+    "hover": true,
+  },
+  "VSelect": {
+    "VMenu": {
+      "VList": {
+        "VIcon": {
+          "size": 24,
+        },
+      },
+    },
+    "VTextField": {
+      "VIcon": {
+        "size": 24,
+      },
+      "VLabel": {
+        "class": "text-uppercase",
+      },
+    },
+    "active": true,
+    "clearIcon": "mdi-close",
+    "variant": "underlined",
+  },
+  "VSlider": {
+    "color": "primary",
+  },
+  "VSnackbar": {
+    "rounded": 0,
+    "timeout": 4000,
+  },
+  "VSpeedDial": {
+    "VBtn": {
+      "height": 56,
+      "rounded": "circle",
+      "width": 56,
+    },
+    "VIcon": {
+      "size": 32,
+    },
+    "scrollStrategy": "close",
+    "transition": "slide-y-reverse-transition",
+  },
+  "VSwitch": {
+    "color": "success",
+    "density": "comfortable",
+    "hideDetails": true,
+  },
+  "VTab": {
+    "VIcon": {
+      "size": 32,
+    },
+    "variant": "text",
+  },
+  "VTabs": {
+    "color": "primary",
+    "mobileBreakpoint": "md",
+    "sliderColor": "primary",
+  },
+  "VTextField": {
+    "VIcon": {
+      "size": 24,
+    },
+    "VLabel": {
+      "class": "text-uppercase",
+    },
+    "active": true,
+    "clearIcon": "mdi-close",
+    "variant": "underlined",
+  },
+  "VTextarea": {
+    "VIcon": {
+      "size": 24,
+    },
+    "VLabel": {
+      "class": "text-uppercase",
+    },
+    "active": true,
+    "clearIcon": "mdi-close",
+    "variant": "underlined",
+  },
+  "VTimeline": {
+    "density": "compact",
+    "direction": "vertical",
+    "hideOpposite": true,
+    "justify": "left",
+    "side": "end",
+    "truncateLine": "both",
+  },
+  "VToolbar": {
+    "VBtn": {
+      "color": null,
+    },
+  },
+  "VTooltip": {
+    "location": "top",
+    "openDelay": 3000,
+  },
+  "global": {
+    "rounded": "md",
+  },
+}
+`;
+
+exports[`знімки пакета > themes 1`] = `
+{
+  "dark": {
+    "colors": {
+      "accent": "#fb8c00",
+      "error": "#ff6633",
+      "info": "#669cc1",
+      "primary": "#669cc1",
+      "secondary": "#ffa800",
+      "selected": "#ff5592",
+      "success": "#7cb342",
+      "warning": "#fb8c00",
+    },
+    "dark": true,
+  },
+  "light": {
+    "colors": {
+      "accent": "#fb8c00",
+      "error": "#ff6633",
+      "info": "#669cc1",
+      "primary": "#669cc1",
+      "secondary": "#ffa800",
+      "selected": "#ff5592",
+      "success": "#7cb342",
+      "warning": "#fb8c00",
+    },
+    "dark": false,
+  },
+}
+`;
