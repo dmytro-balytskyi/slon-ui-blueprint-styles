@@ -19,11 +19,26 @@ function cssRules(css) {
   }))
 }
 
-// settings.scss тягне `vuetify/settings` — його компіляція чекає devDependency vuetify
-// (ТЗ blueprint 2.1), тож тут лише global.scss.
+// ТЗ blueprint 2.2: settings.scss кожен UI підключає як `styles.configFile` у vite-plugin-vuetify.
+// Змінна, якої у Vuetify немає, чи deprecation Sass тут видно один раз — а не в CI споживачів.
+describe('settings.scss', () => {
+  it('компілюється з vuetify/settings без помилок і попереджень Sass', () => {
+    expect(compileScss('src/styles/settings.scss').warnings).toEqual([])
+  })
+})
+
 describe('global.scss', () => {
   it('компілюється без попереджень Sass', () => {
     expect(compileScss('src/styles/global.scss').warnings).toEqual([])
+  })
+
+  // Еталон скомпільованого CSS: правки без зміни вигляду (константи кольорів — ТЗ 3.6, поділ
+  // файлу — 3.10, форматування — 4.1) мусять лишити його без diff. Задумана зміна правил —
+  // оновлюється разом із нею (`vitest -u`), і diff еталона видно в рев'ю.
+  it('скомпільований CSS збігається з еталоном __snapshots__/global.css', async () => {
+    await expect(compileScss('src/styles/global.scss').css).toMatchFileSnapshot(
+      '__snapshots__/global.css'
+    )
   })
 
   // ТЗ shared 4.18a: стек оверлеїв Vuetify — модульний стан кожної копії, а ремоути везуть

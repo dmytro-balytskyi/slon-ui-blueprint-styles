@@ -1,0 +1,499 @@
+@charset "UTF-8";
+.slon-selected__mask,
+.v-combobox__mask,
+.v-autocomplete__mask {
+  background: rgb(var(--v-theme-selected)) !important;
+  color: #fff;
+}
+
+.s-search-highlight em {
+  font-style: normal;
+  background-color: rgb(var(--v-theme-selected));
+  color: #fff;
+  padding: 0 2px;
+}
+
+.v-list-item__prepend .v-list-item__spacer,
+.v-list-item__append .v-list-item__spacer {
+  width: 8px !important;
+}
+
+.v-btn.v-theme--light:not([class*=bg-]):not(.f-btn):not(.v-tab--selected):not([class*=text-]) .v-icon {
+  color: #757575 !important;
+}
+
+.v-btn.v-theme--dark:not([class*=bg-]):not(.f-btn):not(.v-tab--selected):not([class*=text-]) .v-icon {
+  color: #fafafa !important;
+}
+
+.v-messages {
+  top: -6px;
+  /* підняли вище */
+  left: 2px;
+  /* подвинули правіше */
+  text-transform: lowercase;
+  /* текст завжди у нижньому регістрі */
+  white-space: nowrap;
+  /* забороняє переноси */
+  overflow: hidden;
+  /* ховає текст, що виходить за межі */
+  text-overflow: ellipsis;
+  /* додає три крапки для тексту, що обрізається */
+  max-width: 100%;
+  /* обмежує ширину в межах контейнера */
+  box-sizing: border-box;
+  /* враховує padding і border у ширині */
+}
+
+.s-messages-custom {
+  position: relative;
+  left: 0;
+  top: -6px;
+  white-space: nowrap;
+  /* забороняємо перенос тексту */
+  overflow: hidden;
+  /* ховаємо текст, що виходить за межі */
+  text-overflow: ellipsis;
+  /* додаємо три крапки для обрізаного тексту */
+}
+
+.v-text-field .v-input__prepend {
+  margin-inline-end: 8px !important;
+}
+.v-text-field .v-input__append {
+  margin-inline-start: 8px !important;
+}
+
+.s-list {
+  overflow-y: auto;
+  scrollbar-width: thin;
+}
+.s-list .v-list-group__items {
+  --indent-padding: 0px;
+}
+.s-list .v-list-item:not(:last-child) {
+  border-bottom-width: thin;
+  border-bottom-style: solid;
+  border-bottom-color: rgba(var(--v-border-color), var(--v-border-opacity));
+}
+
+.v-list.without-selection .v-list-item--active {
+  background: rgba(0, 0, 0, 0) !important;
+  color: inherit !important;
+}
+.v-list.without-selection .v-list-item--active .v-list-item__overlay {
+  opacity: 0;
+}
+
+.v-theme--light.v-list-item--active {
+  background-color: #f2f2f2 !important;
+  /* змінюємо фон */
+  color: #616161 !important;
+  /* змінюємо колір тексту */
+}
+
+.v-theme--light .v-list-item__prepend > .v-icon,
+.v-theme--light .v-input__prepend > .v-icon,
+.v-theme--light .v-input__append > .v-icon,
+.v-theme--light .v-field__prepend-inner > .v-icon,
+.v-theme--light .v-field__append-inner > .v-icon {
+  opacity: 0.65;
+}
+
+.v-theme--dark .v-list-item__prepend > .v-icon,
+.v-theme--dark .v-input__prepend > .v-icon,
+.v-theme--dark .v-input__append > .v-icon,
+.v-theme--dark .v-field__prepend-inner > .v-icon,
+.v-theme--dark .v-field__append-inner > .v-icon {
+  opacity: 0.9;
+}
+
+.v-label.v-field-label {
+  opacity: 1;
+  color: rgba(var(--v-theme-on-background), 0.6);
+}
+.v-label.v-field-label .v-icon {
+  color: rgba(var(--v-theme-on-background), 0.6);
+  pointer-events: auto;
+}
+
+.v-field--focused .v-label.v-field-label,
+.v-field--error .v-label.v-field-label {
+  color: rgba(var(--v-theme-on-background), 1);
+}
+
+.f-btn.v-btn--variant-tonal {
+  background-color: rgba(0, 0, 0, 0.12) !important;
+}
+
+.v-theme--dark.f-btn .v-btn__content {
+  color: #fff;
+}
+.v-theme--dark.f-btn i {
+  color: #fafafa;
+}
+.v-theme--dark.f-btn .v-btn__underlay,
+.v-theme--dark.f-btn .v-btn__overlay {
+  background-color: rgba(255, 255, 255, 0.966) !important;
+}
+
+.f-btn i {
+  color: #757575;
+}
+.f-btn .v-btn__content {
+  color: rgba(0, 0, 0, 0.87);
+}
+.f-btn .v-btn__underlay,
+.f-btn .v-btn__overlay {
+  background-color: unset !important;
+}
+.f-btn:hover {
+  color: #fff !important;
+}
+.f-btn:hover i,
+.f-btn:hover .v-btn__content {
+  color: #fff;
+}
+.f-btn:not([class*=text-]):hover {
+  color: #fff !important;
+  background-color: rgb(var(--v-theme-primary)) !important;
+}
+.f-btn.text-success:hover {
+  background-color: rgb(var(--v-theme-success)) !important;
+}
+.f-btn.text-error:hover {
+  background-color: rgb(var(--v-theme-error)) !important;
+}
+.f-btn.text-warning:hover {
+  background-color: rgb(var(--v-theme-warning)) !important;
+}
+.f-btn.text-info:hover {
+  background-color: rgb(var(--v-theme-info)) !important;
+}
+
+.add-slider .v-tab__slider.text-primary:before {
+  content: "";
+  position: absolute;
+  height: 100%;
+  width: 100%;
+  background: inherit;
+  left: 0;
+  z-index: 5;
+  bottom: var(--v-tabs-height);
+  transform: translateY(100%);
+}
+.add-slider .v-tab__slider {
+  height: 3px;
+}
+
+.v-theme--dark .v-tab__slider {
+  background-color: #ff4081;
+  /* колір таба */
+}
+.v-theme--dark .v-tab-item--selected {
+  color: #ff4081 !important;
+  /* колір тексту */
+}
+
+.v-counter {
+  transform: translateY(-8px);
+  /* Піднімає counter на 2 пікселя */
+}
+
+.v-select__content .mdi-checkbox-marked,
+.v-autocomplete__content .mdi-checkbox-marked,
+.v-combobox__content .mdi-checkbox-marked {
+  color: rgb(var(--v-theme-success));
+}
+
+.v-textarea.center-affix,
+.v-select.center-affix,
+.v-combobox.center-affix,
+.v-autocomplete.center-affix {
+  align-items: center;
+}
+.v-textarea.center-affix .v-field,
+.v-select.center-affix .v-field,
+.v-combobox.center-affix .v-field,
+.v-autocomplete.center-affix .v-field {
+  align-items: center;
+}
+
+.rows-1 .v-field__input {
+  height: 28px;
+  min-height: 28px;
+  overflow-y: auto;
+  scrollbar-width: thin;
+  padding-top: 0;
+  margin-top: var(--v-field-input-padding-top);
+  align-items: flex-start;
+  align-content: flex-start;
+}
+
+.rows-2 .v-field__input {
+  height: 62px;
+  min-height: 62px;
+  overflow-y: auto;
+  scrollbar-width: thin;
+  padding-top: 0;
+  margin-top: var(--v-field-input-padding-top);
+  align-items: flex-start;
+  align-content: flex-start;
+}
+
+.rows-3 .v-field__input {
+  height: 96px;
+  min-height: 96px;
+  overflow-y: auto;
+  scrollbar-width: thin;
+  padding-top: 0;
+  margin-top: var(--v-field-input-padding-top);
+  align-items: flex-start;
+  align-content: flex-start;
+}
+
+.rows-4 .v-field__input {
+  height: 130px;
+  min-height: 130px;
+  overflow-y: auto;
+  scrollbar-width: thin;
+  padding-top: 0;
+  margin-top: var(--v-field-input-padding-top);
+  align-items: flex-start;
+  align-content: flex-start;
+}
+
+.rows-5 .v-field__input {
+  height: 164px;
+  min-height: 164px;
+  overflow-y: auto;
+  scrollbar-width: thin;
+  padding-top: 0;
+  margin-top: var(--v-field-input-padding-top);
+  align-items: flex-start;
+  align-content: flex-start;
+}
+
+.rows-6 .v-field__input {
+  height: 198px;
+  min-height: 198px;
+  overflow-y: auto;
+  scrollbar-width: thin;
+  padding-top: 0;
+  margin-top: var(--v-field-input-padding-top);
+  align-items: flex-start;
+  align-content: flex-start;
+}
+
+.rows-7 .v-field__input {
+  height: 232px;
+  min-height: 232px;
+  overflow-y: auto;
+  scrollbar-width: thin;
+  padding-top: 0;
+  margin-top: var(--v-field-input-padding-top);
+  align-items: flex-start;
+  align-content: flex-start;
+}
+
+.rows-8 .v-field__input {
+  height: 266px;
+  min-height: 266px;
+  overflow-y: auto;
+  scrollbar-width: thin;
+  padding-top: 0;
+  margin-top: var(--v-field-input-padding-top);
+  align-items: flex-start;
+  align-content: flex-start;
+}
+
+.v-overlay__content.v-snackbar__wrapper {
+  min-width: 200px;
+}
+
+.v-field__field .v-text-field__suffix__text,
+.v-field__field .v-text-field__prefix__text {
+  font-size: 0.8rem;
+  transform: translateY(2px);
+}
+
+.highlight-field {
+  width: 100%;
+  position: relative;
+}
+.highlight-field .colorize-title {
+  position: absolute;
+  top: 20px;
+  background-color: rgb(var(--v-theme-background));
+  width: 100%;
+}
+.highlight-field .colorize-title.text-area {
+  top: 14px;
+  padding-top: 6px;
+  max-height: calc(100% - 37px);
+  overflow-y: auto;
+  white-space: pre-line;
+}
+
+.max-width-100 {
+  max-width: 100% !important;
+}
+
+.v-toolbar.custom-toolbar {
+  background: #fff;
+}
+
+.v-theme--dark.v-toolbar.custom-toolbar {
+  background: #000;
+}
+
+.page-action-btn {
+  width: 56px !important;
+  height: 64px !important;
+}
+
+.field-hover-handle .field-hover-icon {
+  display: none;
+}
+.field-hover-handle:hover .field-hover-icon {
+  display: block;
+}
+
+.s-hover-reveal .s-hover-reveal__target {
+  opacity: 0;
+  transition: opacity 0.15s ease;
+}
+.s-hover-reveal:hover .s-hover-reveal__target, .s-hover-reveal:focus-within .s-hover-reveal__target {
+  opacity: 1;
+}
+
+@media (hover: none) {
+  .s-hover-reveal .s-hover-reveal__target {
+    opacity: 1;
+  }
+}
+.s-card-stripe {
+  --s-stripe-color: var(--v-border-color);
+  --s-stripe-opacity: var(--v-border-opacity);
+  border-left: 11px solid rgba(var(--s-stripe-color), var(--s-stripe-opacity)) !important;
+}
+
+.s-card-stripe--primary {
+  --s-stripe-color: var(--v-theme-primary);
+  --s-stripe-opacity: 1;
+}
+
+.s-card-stripe--secondary {
+  --s-stripe-color: var(--v-theme-secondary);
+  --s-stripe-opacity: 1;
+}
+
+.s-card-stripe--success {
+  --s-stripe-color: var(--v-theme-success);
+  --s-stripe-opacity: 1;
+}
+
+.s-card-stripe--error {
+  --s-stripe-color: var(--v-theme-error);
+  --s-stripe-opacity: 1;
+}
+
+.s-card-stripe--warning {
+  --s-stripe-color: var(--v-theme-warning);
+  --s-stripe-opacity: 1;
+}
+
+.s-card-stripe--info {
+  --s-stripe-color: var(--v-theme-info);
+  --s-stripe-opacity: 1;
+}
+
+.s-card-stripe--grey {
+  --s-stripe-color: 97, 97, 97;
+  --s-stripe-opacity: 1;
+}
+
+.sortable-drag {
+  opacity: 0 !important;
+}
+
+.v-select .v-field__input {
+  row-gap: 0px;
+}
+
+.two-rows .v-field__input {
+  row-gap: 0px !important;
+  max-height: 90px;
+  overflow-y: auto;
+  scrollbar-width: thin;
+}
+
+.three-rows .v-field__input {
+  row-gap: 0px !important;
+  max-height: 124px;
+  overflow-y: auto;
+  scrollbar-width: thin;
+}
+
+.four-rows .v-field__input {
+  row-gap: 0px !important;
+  max-height: 160px;
+  overflow-y: auto;
+  scrollbar-width: thin;
+}
+
+.five-rows .v-field__input {
+  row-gap: 0px !important;
+  max-height: 194px;
+  overflow-y: auto;
+  scrollbar-width: thin;
+}
+
+.v-menu:has(.v-combobox__content),
+.v-menu:has(.v-select__content),
+.custom-z-index {
+  z-index: 10000 !important;
+}
+
+.v-overlay.v-tooltip {
+  z-index: 10000 !important;
+}
+
+.v-date-picker-controls button {
+  width: auto !important;
+}
+
+.v-date-picker-month__day button {
+  height: 100% !important;
+  width: 100% !important;
+}
+
+.v-icon.list-icon {
+  opacity: var(--v-medium-emphasis-opacity);
+  color: rgba(var(--v-theme-on-surface), var(--v-high-emphasis-opacity));
+}
+
+.text-med-emphasis {
+  color: rgba(var(--v-theme-on-surface), 0.6);
+}
+
+.v-theme--dark .text-med-emphasis {
+  color: rgba(var(--v-theme-on-surface), 0.9);
+}
+
+.unselectable {
+  user-select: none;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+}
+.unselectable .selectable {
+  user-select: text;
+}
+
+/* Емодзі в сірому підписі стану («⏳ завантаження повідомлень..») — повний колір теми без альфи.
+   Інакше емодзі успадковує напівпрозорість `text-medium-emphasis` і виглядає бляклим.
+   Правило — slon24-docs guides/frontends/ui-patterns.md §Підписи стану списку. */
+.state-emoji {
+  color: rgb(var(--v-theme-on-surface));
+}
