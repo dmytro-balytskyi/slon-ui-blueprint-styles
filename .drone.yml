@@ -11,6 +11,7 @@ steps:
       - corepack prepare pnpm@10.20.0 --activate
       - pnpm config set registry https://npm.taxi-beton.ua
       - pnpm install --frozen-lockfile
+      - pnpm format:check
       - pnpm test
 
   - name: publish
@@ -58,6 +59,6 @@ trigger:
     - push
 ---
 kind: signature
-hmac: 0d4c20719c87f3ad9676d3cc4114c24be2584f9d9239466c6556bd0e468cc203
+hmac: 36bd1aad2e6b792a7a59b9b7f01b6cff1ac9fce9570177ed5ce01c04fe5d3714
 
 ...
