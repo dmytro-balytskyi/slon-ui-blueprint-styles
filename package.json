@@ -4,6 +4,9 @@
   "description": "SlonBeton blueprint and global scss",
   "main": "./src/index.js",
   "type": "module",
+  "files": [
+    "src"
+  ],
   "scripts": {
     "patch": "pnpm version patch",
     "test": "vitest run"
