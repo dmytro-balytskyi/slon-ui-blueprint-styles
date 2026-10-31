@@ -3,6 +3,7 @@
   "version": "0.0.45",
   "description": "SlonBeton blueprint and global scss",
   "main": "./src/index.js",
+  "types": "./src/index.d.ts",
   "type": "module",
   "files": [
     "src"
