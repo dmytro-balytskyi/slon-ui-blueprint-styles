@@ -10,11 +10,6 @@ const { blueprint, themes } = await import(new URL(`../${pkg.main}`, import.meta
 // Псевдоніми споживачі ставлять самі (`blueprint.aliases` у plugins/vuetify.*): усі три — VBtn.
 const ALIASES = { VBtnIcon: 'VBtn', SBtn: 'VBtn', FBtn: 'VBtn' }
 
-// ТЗ 3.1: мертві дефолти чинного блупринту — пропси VRadio.hideDetails у Vuetify немає, а
-// VTimeline.justify не приймає 'left'. До 3.1 тест на них червоний за планом (it.fails); щойно 3.1
-// їх зніме, it.fails почервоніє — тоді прибрати рядок звідси.
-const KNOWN_BROKEN = new Set(['VTimeline.justify', 'VRadio.hideDetails'])
-
 // Тип — так, як перевіряє Vue: null і undefined не перевіряються, Object — будь-який об'єкт.
 const TYPE_CHECKS = new Map([
   [String, (value) => typeof value === 'string'],
@@ -61,9 +56,8 @@ describe('blueprint.defaults проти встановленого Vuetify', () 
   )
 
   for (const { path, name, prop, value } of usedProps) {
-    const test = KNOWN_BROKEN.has(path) ? it.fails : it
     const shown = JSON.stringify(value)
-    test(`${path} = ${shown} — пропса є, тип і validator приймають`, () => {
+    it(`${path} = ${shown} — пропса є, тип і validator приймають`, () => {
       const raw = componentOf(name)?.props?.[prop]
       expect(raw, `у ${ALIASES[name] ?? name} немає пропси ${prop}`).toBeDefined()
       const def = typeof raw === 'function' || Array.isArray(raw) ? { type: raw } : raw

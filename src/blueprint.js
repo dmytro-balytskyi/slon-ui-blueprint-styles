@@ -5,7 +5,7 @@ const blueprint = {
     },
 
     VBtnIcon: {
-      icon: 'icon',
+      icon: true,
       rounded: 0,
       VIcon: {
         size: 32
@@ -82,10 +82,7 @@ const blueprint = {
       color: 'grey-darken-1',
       density: 'comfortable',
       clearable: true,
-      hover: true,
-      VIcon: {
-        class: ''
-      }
+      hover: true
     },
 
     VChip: {
@@ -121,12 +118,6 @@ const blueprint = {
 
     VCardTitle: {
       style: 'user-select: none;'
-    },
-
-    VToolbar: {
-      VBtn: {
-        color: null
-      }
     },
 
     VBottomNavigation: {
@@ -288,7 +279,6 @@ const blueprint = {
     VRadio: {
       color: 'success',
       density: 'comfortable',
-      hideDetails: true,
       VIcon: {
         size: 24
       }
@@ -302,9 +292,7 @@ const blueprint = {
 
     VTimeline: {
       density: 'compact',
-      justify: 'left',
       side: 'end',
-      direction: 'vertical',
       truncateLine: 'both',
       hideOpposite: true
     },

@@ -70,7 +70,7 @@ exports[`знімки пакета > blueprint.defaults 1`] = `
     "VIcon": {
       "size": 32,
     },
-    "icon": "icon",
+    "icon": true,
     "rounded": 0,
   },
   "VBtnToggle": {
@@ -177,7 +177,6 @@ exports[`знімки пакета > blueprint.defaults 1`] = `
     },
     "color": "success",
     "density": "comfortable",
-    "hideDetails": true,
   },
   "VRadioGroup": {
     "color": "success",
@@ -185,9 +184,6 @@ exports[`знімки пакета > blueprint.defaults 1`] = `
     "hideDetails": true,
   },
   "VRating": {
-    "VIcon": {
-      "class": "",
-    },
     "activeColor": "secondary",
     "clearable": true,
     "color": "grey-darken-1",
@@ -273,16 +269,9 @@ exports[`знімки пакета > blueprint.defaults 1`] = `
   },
   "VTimeline": {
     "density": "compact",
-    "direction": "vertical",
     "hideOpposite": true,
-    "justify": "left",
     "side": "end",
     "truncateLine": "both",
-  },
-  "VToolbar": {
-    "VBtn": {
-      "color": null,
-    },
   },
   "VTooltip": {
     "location": "top",
