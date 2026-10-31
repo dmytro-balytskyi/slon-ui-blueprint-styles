@@ -1,0 +1,3 @@
+# Знімки vitest — завжди LF: з core.autocrlf=true Windows-клон видавав їх із CRLF, а перший прогін
+# тестів переписував у LF — вміст той самий, але git status показував зміну (ТЗ blueprint 4.3).
+tests/__snapshots__/** text eol=lf
