@@ -1,3 +1,9 @@
+// Кольори, яких немає серед токенів теми (ТЗ blueprint 3.6). Перехід на rgba(var(--v-theme-on-surface), …) змінить
+// вигляд — це окреме рішення.
+$icon-grey-light: #757575; // іконки кнопок і f-btn, світла тема
+$icon-grey-dark: #fafafa; // іконки кнопок і f-btn, темна тема
+$dark-tab-accent: #ff4081; // слайдер і активна v-tab, темна тема
+
 // маска пошукового фрагменту (акцентування малиновим кольором)
 .slon-selected__mask,
 .v-combobox__mask,
@@ -29,13 +35,13 @@
 // а не сірою. Типографію на кнопку не вішати — ставити на вміст усередині.
 .v-btn.v-theme--light:not([class*='bg-']):not(.f-btn):not(.v-tab--selected):not([class*='text-']) {
   .v-icon {
-    color: #757575 !important;
+    color: $icon-grey-light !important;
   }
 }
 
 .v-btn.v-theme--dark:not([class*='bg-']):not(.f-btn):not(.v-tab--selected):not([class*='text-']) {
   .v-icon {
-    color: #fafafa !important;
+    color: $icon-grey-dark !important;
   }
 }
 
@@ -155,7 +161,7 @@
 
   i {
     // колір іконки в f-btn dark theme
-    color: #fafafa;
+    color: $icon-grey-dark;
   }
 
   .v-btn__underlay,
@@ -167,7 +173,7 @@
 
 .f-btn {
   i {
-    color: #757575;
+    color: $icon-grey-light;
   }
 
   .v-btn__content {
@@ -222,11 +228,11 @@
 // колір активного v-tab для темної теми
 .v-theme--dark {
   .v-tab__slider {
-    background-color: #ff4081;
+    background-color: $dark-tab-accent;
   }
 
   .v-tab-item--selected {
-    color: #ff4081 !important;
+    color: $dark-tab-accent !important;
   }
 }
 
