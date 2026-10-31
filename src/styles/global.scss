@@ -96,14 +96,14 @@
   }
 }
 
-// v-list прибираємо active styles 
+// v-list прибираємо active styles
 .v-list.without-selection {
   .v-list-item--active {
-      background: rgba(0, 0, 0, 0) !important;
-      color: inherit !important;
-      .v-list-item__overlay {
-          opacity: 0;
-      }
+    background: rgba(0, 0, 0, 0) !important;
+    color: inherit !important;
+    .v-list-item__overlay {
+      opacity: 0;
+    }
   }
 }
 
@@ -117,23 +117,21 @@
 
 // регулювання прозорості іконок у input полях та у списках
 .v-theme--light {
-
-  .v-list-item__prepend>.v-icon,
-  .v-input__prepend>.v-icon,
-  .v-input__append>.v-icon,
-  .v-field__prepend-inner>.v-icon,
-  .v-field__append-inner>.v-icon {
+  .v-list-item__prepend > .v-icon,
+  .v-input__prepend > .v-icon,
+  .v-input__append > .v-icon,
+  .v-field__prepend-inner > .v-icon,
+  .v-field__append-inner > .v-icon {
     opacity: 0.65;
   }
 }
 
 .v-theme--dark {
-
-  .v-list-item__prepend>.v-icon,
-  .v-input__prepend>.v-icon,
-  .v-input__append>.v-icon,
-  .v-field__prepend-inner>.v-icon,
-  .v-field__append-inner>.v-icon {
+  .v-list-item__prepend > .v-icon,
+  .v-input__prepend > .v-icon,
+  .v-input__append > .v-icon,
+  .v-field__prepend-inner > .v-icon,
+  .v-field__append-inner > .v-icon {
     opacity: 0.9;
   }
 }
@@ -160,7 +158,6 @@
 }
 
 .v-theme--dark.f-btn {
-
   .v-btn__content {
     // колір тексту в f-btn dark theme
     color: #fff;
@@ -201,7 +198,7 @@
     }
   }
 
-  &:not([class*="text-"]):hover {
+  &:not([class*='text-']):hover {
     color: #fff !important;
     background-color: rgb(var(--v-theme-primary)) !important;
   }
@@ -271,7 +268,9 @@
 }
 
 // регулювання умовної кількості рядків (висоти) у полях вибору (v-select, v-combobox тощо) та вертикальне вирівнювання
-@each $rows, $height in (1: 28px, 2: 62px, 3: 96px, 4: 130px, 5: 164px, 6: 198px, 7: 232px, 8: 266px) {
+@each $rows,
+  $height in (1: 28px, 2: 62px, 3: 96px, 4: 130px, 5: 164px, 6: 198px, 7: 232px, 8: 266px)
+{
   .rows-#{$rows} {
     .v-field__input {
       height: $height;
@@ -293,10 +292,9 @@
 
 // змінюємо розмір шрифта prefix та suffix
 .v-field__field {
-
   .v-text-field__suffix__text,
   .v-text-field__prefix__text {
-    font-size: 0.800rem;
+    font-size: 0.8rem;
     transform: translateY(2px);
   }
 }
