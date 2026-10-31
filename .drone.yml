@@ -4,6 +4,15 @@ type: kubernetes
 name: slon-ui-blueprint-styles
 
 steps:
+  - name: test
+    image: node:22-alpine
+    commands:
+      - corepack enable
+      - corepack prepare pnpm@10.20.0 --activate
+      - pnpm config set registry https://npm.taxi-beton.ua
+      - pnpm install --frozen-lockfile
+      - pnpm test
+
   - name: publish
     image: plugins/npm
     settings:
@@ -15,7 +24,9 @@ steps:
         from_secret: npm_email
       token:
         from_secret: npm_token
-  
+    when:
+      status: [success]
+
   - name: notify
     image: registry.taxi-beton.ua/drone-telegram:latest
     pull: always
@@ -47,6 +58,6 @@ trigger:
     - push
 ---
 kind: signature
-hmac: fc6a95a2bf8aebd78b5ff845d7438a341b5dc04f039d042cbd92ac24ad4a065f
+hmac: 0d4c20719c87f3ad9676d3cc4114c24be2584f9d9239466c6556bd0e468cc203
 
 ...
