@@ -403,13 +403,6 @@
   opacity: 0 !important;
 }
 
-// невідомо?
-.v-select {
-  .v-field__input {
-    row-gap: 0px;
-  }
-}
-
 // z-index для випадаючих списків v-select та v-combobox
 .v-menu:has(.v-combobox__content),
 .v-menu:has(.v-select__content),
