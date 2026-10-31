@@ -9,7 +9,9 @@
   ],
   "scripts": {
     "patch": "pnpm version patch",
-    "test": "vitest run"
+    "test": "vitest run",
+    "format": "prettier --write src README.md",
+    "format:check": "prettier --check src README.md"
   },
   "keywords": [
     "slonbeton",
@@ -22,6 +24,7 @@
     "url": "https://github.com/dmytro-balytskyi/slon-ui-blueprint-styles.git"
   },
   "devDependencies": {
+    "prettier": "^3.9.10",
     "sass": "^1.99.0",
     "vitest": "^1.6.1",
     "vue": "~3.5.34",

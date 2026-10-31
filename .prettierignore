@@ -1,0 +1,4 @@
+# .drone.yml підписаний (HMAC): prettier --write міняє в ньому кілька рядків, і білди репо мовчки стають
+# blocked — правити лише руками з перепідписом tools/drone-sign.ps1 (ТЗ blueprint 4.1).
+.drone.yml
+pnpm-lock.yaml
