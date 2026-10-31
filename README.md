@@ -1,7 +1,8 @@
 # slon-ui-blueprint-styles
 
 Дизайн-система SLON24 для Vuetify 3: `blueprint` (дефолти компонентів), `themes` (світла й темна),
-`src/styles/global.scss` (глобальні класи) і `src/styles/settings.scss` (SCSS-змінні Vuetify).
+`createAliases` (псевдоніми кнопок), `src/styles/global.scss` (глобальні класи) і `src/styles/settings.scss`
+(SCSS-змінні Vuetify).
 
 ## Що станеться після push у `master`
 
@@ -35,7 +36,15 @@ import 'vuetify/styles'
 import '@slonbeton/slon-ui-blueprint-styles/src/styles/global.scss'
 import { createVuetify } from 'vuetify'
 import { VBtn } from 'vuetify/components/VBtn'
-import { blueprint, themes } from '@slonbeton/slon-ui-blueprint-styles'
-blueprint.aliases = { VBtnIcon: VBtn, SBtn: VBtn, FBtn: VBtn }
-export default createVuetify({ blueprint, theme: { defaultTheme: 'light', themes } })
+import { blueprint, themes, createAliases } from '@slonbeton/slon-ui-blueprint-styles'
+export default createVuetify({
+  blueprint,
+  aliases: createAliases(VBtn),
+  theme: { defaultTheme: 'light', themes }
+})
 ```
+
+`createAliases(VBtn)` (з 0.1.0) дає `<v-btn-icon>`, `<s-btn>` і `<f-btn>` — це `VBtn` під іменами, для яких блупринт
+задає свої дефолти. Кнопку передає застосунок: пакет не імпортує Vuetify, тож і не має залежності на нього.
+Старий запис `blueprint.aliases = { VBtnIcon: VBtn, SBtn: VBtn, FBtn: VBtn }` ще працює, але мутує об'єкт пакета —
+новий код так не пише.
