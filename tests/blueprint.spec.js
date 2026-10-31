@@ -5,10 +5,13 @@ import * as components from 'vuetify/components'
 // Пакет імпортуємо так, як споживачі: через `main` з package.json, а не з src/blueprint.js
 // напряму — тоді й перейменування файлів у src/ (ТЗ 4.2) лишається під цим тестом.
 const pkg = JSON.parse(readFileSync(new URL('../package.json', import.meta.url), 'utf8'))
-const { blueprint, themes } = await import(new URL(`../${pkg.main}`, import.meta.url).href)
+const { blueprint, themes, createAliases } = await import(
+  new URL(`../${pkg.main}`, import.meta.url).href
+)
 
-// Псевдоніми споживачі ставлять самі (`blueprint.aliases` у plugins/vuetify.*): усі три — VBtn.
-const ALIASES = { VBtnIcon: 'VBtn', SBtn: 'VBtn', FBtn: 'VBtn' }
+// Псевдоніми — так, як їх підключає споживач: createVuetify({ blueprint, aliases: createAliases(VBtn) }) (ТЗ 3.9).
+const ALIASES = createAliases(components.VBtn)
+const nameOf = (name) => ALIASES[name]?.name ?? name
 
 // Тип — так, як перевіряє Vue: null і undefined не перевіряються, Object — будь-який об'єкт.
 const TYPE_CHECKS = new Map([
@@ -43,7 +46,7 @@ const { components: usedComponents, props: usedProps } = Object.entries(blueprin
   .filter(([name]) => name !== 'global')
   .reduce((out, [name, defaults]) => walk(name, defaults, name, out), { components: [], props: [] })
 
-const componentOf = (name) => components[ALIASES[name] ?? name]
+const componentOf = (name) => ALIASES[name] ?? components[name]
 
 // ТЗ 2.1: дефолт із неіснуючою пропсою чи значенням, яке Vuetify відкидає, мовчки не діє — у бою
 // нічого не червоніє, просто вигляд не той. Тут таке видно до публікації.
@@ -51,7 +54,7 @@ describe('blueprint.defaults проти встановленого Vuetify', () 
   it.each(usedComponents.map(({ path, name }) => [path, name]))(
     '%s — компонент є у vuetify/components',
     (_, name) => {
-      expect(componentOf(name), `немає компонента ${ALIASES[name] ?? name}`).toBeDefined()
+      expect(componentOf(name), `немає компонента ${nameOf(name)}`).toBeDefined()
     }
   )
 
@@ -59,7 +62,7 @@ describe('blueprint.defaults проти встановленого Vuetify', () 
     const shown = JSON.stringify(value)
     it(`${path} = ${shown} — пропса є, тип і validator приймають`, () => {
       const raw = componentOf(name)?.props?.[prop]
-      expect(raw, `у ${ALIASES[name] ?? name} немає пропси ${prop}`).toBeDefined()
+      expect(raw, `у ${nameOf(name)} немає пропси ${prop}`).toBeDefined()
       const def = typeof raw === 'function' || Array.isArray(raw) ? { type: raw } : raw
       expect(typeMatches(def.type, value), `тип ${prop} не приймає ${shown}`).toBe(true)
       if (def.validator) {
@@ -67,6 +70,27 @@ describe('blueprint.defaults проти встановленого Vuetify', () 
       }
     })
   }
+})
+
+// ТЗ 3.9: дефолти під іменем, якого немає серед компонентів Vuetify, діють лише через псевдонім — без
+// нього в споживача тег (`<f-btn>`) просто не знайдеться, і це видно лише в браузері.
+describe('createAliases', () => {
+  it('рівно три псевдоніми, кожен — передана кнопка', () => {
+    expect(Object.keys(ALIASES).sort()).toEqual(['FBtn', 'SBtn', 'VBtnIcon'])
+    for (const component of Object.values(ALIASES)) expect(component).toBe(components.VBtn)
+  })
+
+  it('кожен виклик — новий екземпляр, спільного стану немає', () => {
+    expect(createAliases(components.VBtn)).not.toBe(createAliases(components.VBtn))
+  })
+
+  it.each(usedComponents.filter(({ name }) => !(name in components)).map(({ path }) => [path]))(
+    '%s — не компонент Vuetify, тож має псевдонім',
+    (path) => {
+      const name = path.split('.').at(-1)
+      expect(Object.keys(ALIASES), `дефолти ${path} без псевдоніма`).toContain(name)
+    }
+  )
 })
 
 // Сейфнет під ТЗ 3.1 і 3.5 (зняття мертвих дефолтів, константи розмірів іконок): зміна, яку не
