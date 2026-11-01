@@ -1,4 +1,3 @@
-@charset "UTF-8";
 .slon-selected__mask,
 .v-combobox__mask,
 .v-autocomplete__mask {
@@ -319,10 +318,6 @@
   white-space: pre-line;
 }
 
-.max-width-100 {
-  max-width: 100% !important;
-}
-
 .v-toolbar.custom-toolbar {
   background: #fff;
 }
@@ -431,11 +426,4 @@
 
 .v-theme--dark .text-med-emphasis {
   color: rgba(var(--v-theme-on-surface), 0.9);
-}
-
-/* Емодзі в сірому підписі стану («⏳ завантаження повідомлень..») — повний колір теми без альфи.
-   Інакше емодзі успадковує напівпрозорість `text-medium-emphasis` і виглядає бляклим.
-   Правило — slon24-docs guides/frontends/ui-patterns.md §Підписи стану списку. */
-.state-emoji {
-  color: rgb(var(--v-theme-on-surface));
 }

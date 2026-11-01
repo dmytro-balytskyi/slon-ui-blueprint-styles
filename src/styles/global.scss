@@ -316,11 +316,6 @@ $dark-tab-accent: #ff4081; // слайдер і активна v-tab, темна
   }
 }
 
-// ширина кнопки v-bottom-navigation з 1 кнопкою (допоміжний клас)
-.max-width-100 {
-  max-width: 100% !important;
-}
-
 // фон тулбара — лише для Storybook shared (ExchangeRates, Weather): у застосунках класу немає, лишено
 // рішенням 2026-10-31, щоб не випускати shared заради прикладів (ТЗ blueprint 3.2)
 .v-toolbar.custom-toolbar {
@@ -436,11 +431,4 @@ $dark-tab-accent: #ff4081; // слайдер і активна v-tab, темна
 }
 .v-theme--dark .text-med-emphasis {
   color: rgba(var(--v-theme-on-surface), 0.9);
-}
-
-/* Емодзі в сірому підписі стану («⏳ завантаження повідомлень..») — повний колір теми без альфи.
-   Інакше емодзі успадковує напівпрозорість `text-medium-emphasis` і виглядає бляклим.
-   Правило — slon24-docs guides/frontends/ui-patterns.md §Підписи стану списку. */
-.state-emoji {
-  color: rgb(var(--v-theme-on-surface));
 }
