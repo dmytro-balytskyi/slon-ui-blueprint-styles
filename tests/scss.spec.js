@@ -123,4 +123,20 @@ describe('global.scss', () => {
     expect(rule, 'немає правила .sortable-drag').toBeDefined()
     expect(rule.body).toMatch(/opacity:\s*0 !important;/)
   })
+
+  // Висота rows-N рахується від чипа 24 px: рядок — 24 + 8, знизу 4, разом 32N − 4, тож відступ під нижнім чипом
+  // однаковий на всіх N. Без закріпленого чипа v-select із 26 px (порядок CSS чанків) переростає поле — зайвий скролбар.
+  it('.rows-N: висота 32N − 4 і закріплений чип 24 px', () => {
+    const rules = cssRules(compileScss('src/styles/global.scss').css)
+    const body = (selector) => rules.find(({ selectors }) => selectors.includes(selector))?.body
+
+    for (let rows = 1; rows <= 8; rows += 1) {
+      const height = 32 * rows - 4
+      const input = body(`.rows-${rows} .v-field__input`)
+
+      expect(input, `немає правила .rows-${rows} .v-field__input`).toMatch(new RegExp(`\\sheight:\\s*${height}px;`))
+      expect(input).toMatch(new RegExp(`min-height:\\s*${height}px;`))
+      expect(body(`.rows-${rows} .v-field .v-chip`), `немає чипа в .rows-${rows}`).toMatch(/--v-chip-height:\s*24px;/)
+    }
+  })
 })

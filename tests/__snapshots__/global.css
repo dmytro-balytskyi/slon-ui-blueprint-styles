@@ -212,65 +212,83 @@
   align-items: flex-start;
   align-content: flex-start;
 }
+.rows-1 .v-field .v-chip {
+  --v-chip-height: 24px;
+}
 
 .rows-2 .v-field__input {
-  height: 62px;
-  min-height: 62px;
+  height: 60px;
+  min-height: 60px;
   overflow-y: auto;
   scrollbar-width: thin;
   padding-top: 0;
   margin-top: var(--v-field-input-padding-top);
   align-items: flex-start;
   align-content: flex-start;
+}
+.rows-2 .v-field .v-chip {
+  --v-chip-height: 24px;
 }
 
 .rows-3 .v-field__input {
-  height: 96px;
-  min-height: 96px;
+  height: 92px;
+  min-height: 92px;
   overflow-y: auto;
   scrollbar-width: thin;
   padding-top: 0;
   margin-top: var(--v-field-input-padding-top);
   align-items: flex-start;
   align-content: flex-start;
+}
+.rows-3 .v-field .v-chip {
+  --v-chip-height: 24px;
 }
 
 .rows-4 .v-field__input {
-  height: 130px;
-  min-height: 130px;
+  height: 124px;
+  min-height: 124px;
   overflow-y: auto;
   scrollbar-width: thin;
   padding-top: 0;
   margin-top: var(--v-field-input-padding-top);
   align-items: flex-start;
   align-content: flex-start;
+}
+.rows-4 .v-field .v-chip {
+  --v-chip-height: 24px;
 }
 
 .rows-5 .v-field__input {
-  height: 164px;
-  min-height: 164px;
+  height: 156px;
+  min-height: 156px;
   overflow-y: auto;
   scrollbar-width: thin;
   padding-top: 0;
   margin-top: var(--v-field-input-padding-top);
   align-items: flex-start;
   align-content: flex-start;
+}
+.rows-5 .v-field .v-chip {
+  --v-chip-height: 24px;
 }
 
 .rows-6 .v-field__input {
-  height: 198px;
-  min-height: 198px;
+  height: 188px;
+  min-height: 188px;
   overflow-y: auto;
   scrollbar-width: thin;
   padding-top: 0;
   margin-top: var(--v-field-input-padding-top);
   align-items: flex-start;
   align-content: flex-start;
+}
+.rows-6 .v-field .v-chip {
+  --v-chip-height: 24px;
 }
 
 .rows-7 .v-field__input {
-  height: 232px;
-  min-height: 232px;
+  height: 220px;
+  min-height: 220px;
   overflow-y: auto;
   scrollbar-width: thin;
   padding-top: 0;
@@ -278,16 +296,22 @@
   align-items: flex-start;
   align-content: flex-start;
 }
+.rows-7 .v-field .v-chip {
+  --v-chip-height: 24px;
+}
 
 .rows-8 .v-field__input {
-  height: 266px;
-  min-height: 266px;
+  height: 252px;
+  min-height: 252px;
   overflow-y: auto;
   scrollbar-width: thin;
   padding-top: 0;
   margin-top: var(--v-field-input-padding-top);
   align-items: flex-start;
   align-content: flex-start;
+}
+.rows-8 .v-field .v-chip {
+  --v-chip-height: 24px;
 }
 
 .v-overlay__content.v-snackbar__wrapper {
