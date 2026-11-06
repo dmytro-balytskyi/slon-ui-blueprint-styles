@@ -156,6 +156,13 @@
 .f-btn.text-info:hover {
   background-color: rgb(var(--v-theme-info)) !important;
 }
+.f-btn.v-btn--disabled {
+  opacity: 1;
+}
+.f-btn.v-btn--disabled i,
+.f-btn.v-btn--disabled .v-btn__content {
+  color: rgba(var(--v-theme-on-surface), var(--v-disabled-opacity));
+}
 
 .add-slider .v-tab__slider.text-primary:before {
   content: "";

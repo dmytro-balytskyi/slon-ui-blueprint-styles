@@ -207,6 +207,17 @@ $dark-tab-accent: #ff4081; // слайдер і активна v-tab, темна
       background-color: rgb(var(--v-theme-#{$color})) !important;
     }
   }
+
+  // Вимкнена кнопка: заливка лишається, блідне лише вміст. Штатний `.v-btn--disabled` гасить усю кнопку (opacity 0.26),
+  // і вона зливається з тлом. Правило стоїть після темної теми, бо перебиває її кольори за тієї ж специфічності.
+  &.v-btn--disabled {
+    opacity: 1;
+
+    i,
+    .v-btn__content {
+      color: rgba(var(--v-theme-on-surface), var(--v-disabled-opacity));
+    }
+  }
 }
 
 // стилізація v-tab (додатковий slider)

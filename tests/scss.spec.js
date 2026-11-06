@@ -124,6 +124,21 @@ describe('global.scss', () => {
     expect(rule.body).toMatch(/opacity:\s*0 !important;/)
   })
 
+  // Штатний `.v-btn--disabled` гасить усю кнопку разом із заливкою. Специфічність кольору та сама, що в темної теми,
+  // тож вирішує порядок: правило стоїть після неї.
+  it('.f-btn вимкнена: заливка лишається, блідне вміст, колір перебиває темну тему', () => {
+    const rules = cssRules(compileScss('src/styles/global.scss').css)
+    const indexOf = (selector) => rules.findIndex(({ selectors }) => selectors.includes(selector))
+    const content = rules[indexOf('.f-btn.v-btn--disabled .v-btn__content')]
+
+    expect(rules[indexOf('.f-btn.v-btn--disabled')].body).toMatch(/opacity:\s*1;/)
+    expect(content.selectors).toContain('.f-btn.v-btn--disabled i')
+    expect(content.body).toMatch(/color:\s*rgba\(var\(--v-theme-on-surface\), var\(--v-disabled-opacity\)\);/)
+    expect(indexOf('.f-btn.v-btn--disabled .v-btn__content')).toBeGreaterThan(
+      indexOf('.v-theme--dark.f-btn .v-btn__content')
+    )
+  })
+
   // Висота rows-N рахується від чипа 24 px: рядок — 24 + 8, знизу 4, разом 32N − 4, тож відступ під нижнім чипом
   // однаковий на всіх N. Без закріпленого чипа v-select із 26 px (порядок CSS чанків) переростає поле — зайвий скролбар.
   it('.rows-N: висота 32N − 4 і закріплений чип 24 px', () => {
