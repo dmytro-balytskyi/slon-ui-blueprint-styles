@@ -1,3 +1,5 @@
+# Публікація пакета перенесена в slonbeton/slon24-design-lib (Woodpecker, власний Verdaccio, ADR-003 крок 4).
+# Цей репо більше нічого не публікує; пайплайн лишено тимчасово (test, notify, downstream) до завершення переїзду.
 ---
 kind: pipeline
 type: kubernetes
@@ -13,20 +15,6 @@ steps:
       - pnpm install --frozen-lockfile
       - pnpm format:check
       - pnpm test
-
-  - name: publish
-    image: plugins/npm
-    settings:
-      username:
-        from_secret: npm_username
-      password:
-        from_secret: npm_password
-      email:
-        from_secret: npm_email
-      token:
-        from_secret: npm_token
-    when:
-      status: [success]
 
   - name: notify
     image: registry.taxi-beton.ua/drone-telegram:latest
@@ -57,8 +45,3 @@ trigger:
     - master
   event:
     - push
----
-kind: signature
-hmac: 36bd1aad2e6b792a7a59b9b7f01b6cff1ac9fce9570177ed5ce01c04fe5d3714
-
-...
